@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b848gmojtg2pi"]
+
+[ext_resource type="Script" path="res://Scripts/Laser.cs" id="1_okh77"]
+[ext_resource type="Texture2D" uid="uid://cbv0gpyr11yvn" path="res://Sprites/Laser/laserRed01.png" id="2_1f4nb"]
+
+[node name="Laser" type="Node2D"]
+script = ExtResource("1_okh77")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(527, 591)
+texture = ExtResource("2_1f4nb")
