@@ -91,7 +91,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 24.0
 }]
 
 [node name="Nave" type="Node2D"]
@@ -103,3 +103,4 @@ texture = ExtResource("1_7lk6v")
 position = Vector2(0, 63)
 scale = Vector2(0.140625, 0.140625)
 sprite_frames = SubResource("SpriteFrames_rgk6b")
+autoplay = "default"
