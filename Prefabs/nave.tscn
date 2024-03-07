@@ -1,0 +1,105 @@
+[gd_scene load_steps=24 format=3 uid="uid://pf6p6bq00ynd"]
+
+[ext_resource type="Texture2D" uid="uid://cv1cipndvbr2j" path="res://Sprites/Nave/playerShip3_red.png" id="1_7lk6v"]
+[ext_resource type="Texture2D" uid="uid://bu2ku7x03ewr" path="res://Sprites/Nave/Turbine/Thruster_00000.png" id="2_70os7"]
+[ext_resource type="Texture2D" uid="uid://b1uyl7fs75rww" path="res://Sprites/Nave/Turbine/Thruster_00001.png" id="3_tspva"]
+[ext_resource type="Texture2D" uid="uid://bmo57glpsnchs" path="res://Sprites/Nave/Turbine/Thruster_00002.png" id="4_2dh43"]
+[ext_resource type="Texture2D" uid="uid://c2jdcqr35ihs7" path="res://Sprites/Nave/Turbine/Thruster_00003.png" id="5_t1yd4"]
+[ext_resource type="Texture2D" uid="uid://dxneq3dihcvj5" path="res://Sprites/Nave/Turbine/Thruster_00004.png" id="6_vwaog"]
+[ext_resource type="Texture2D" uid="uid://b2rvjucm4nrir" path="res://Sprites/Nave/Turbine/Thruster_00005.png" id="7_k6p5i"]
+[ext_resource type="Texture2D" uid="uid://cyl1mdkt1gjl7" path="res://Sprites/Nave/Turbine/Thruster_00006.png" id="8_0uicx"]
+[ext_resource type="Texture2D" uid="uid://b2b75h32usu0n" path="res://Sprites/Nave/Turbine/Thruster_00007.png" id="9_2xyd4"]
+[ext_resource type="Texture2D" uid="uid://c0wjf1ecgi2ox" path="res://Sprites/Nave/Turbine/Thruster_00008.png" id="10_ya6aw"]
+[ext_resource type="Texture2D" uid="uid://bvflahdde28sh" path="res://Sprites/Nave/Turbine/Thruster_00009.png" id="11_h6ps4"]
+[ext_resource type="Texture2D" uid="uid://c62o56pjqunmt" path="res://Sprites/Nave/Turbine/Thruster_00010.png" id="12_kfip2"]
+[ext_resource type="Texture2D" uid="uid://bnl01jkb32rfn" path="res://Sprites/Nave/Turbine/Thruster_00011.png" id="13_cbrcv"]
+[ext_resource type="Texture2D" uid="uid://b417smm36cik1" path="res://Sprites/Nave/Turbine/Thruster_00012.png" id="14_yb48q"]
+[ext_resource type="Texture2D" uid="uid://dfs5xdka2s1jb" path="res://Sprites/Nave/Turbine/Thruster_00013.png" id="15_gg8p4"]
+[ext_resource type="Texture2D" uid="uid://djtqr7bmfl5ap" path="res://Sprites/Nave/Turbine/Thruster_00014.png" id="16_7nk43"]
+[ext_resource type="Texture2D" uid="uid://dk06riyfamy53" path="res://Sprites/Nave/Turbine/Thruster_00015.png" id="17_6pu0x"]
+[ext_resource type="Texture2D" uid="uid://b1tpke0toig64" path="res://Sprites/Nave/Turbine/Thruster_00016.png" id="18_yjkkt"]
+[ext_resource type="Texture2D" uid="uid://bs284roqq3jg6" path="res://Sprites/Nave/Turbine/Thruster_00017.png" id="19_q8v8i"]
+[ext_resource type="Texture2D" uid="uid://c7mxvflw1sb8s" path="res://Sprites/Nave/Turbine/Thruster_00018.png" id="20_s2at2"]
+[ext_resource type="Texture2D" uid="uid://blsoj30crefyw" path="res://Sprites/Nave/Turbine/Thruster_00019.png" id="21_m8eh3"]
+[ext_resource type="Texture2D" uid="uid://xnm7bv6vcfxj" path="res://Sprites/Nave/Turbine/Thruster_00020.png" id="22_x3jbm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rgk6b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_70os7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tspva")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2dh43")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_t1yd4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vwaog")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_k6p5i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0uicx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2xyd4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ya6aw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_h6ps4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_kfip2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_cbrcv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_yb48q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_gg8p4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_7nk43")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_6pu0x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_yjkkt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_q8v8i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_s2at2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_m8eh3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_x3jbm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Nave" type="Node2D"]
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("1_7lk6v")
+
+[node name="Turbine" type="AnimatedSprite2D" parent="Body"]
+position = Vector2(0, 63)
+scale = Vector2(0.140625, 0.140625)
+sprite_frames = SubResource("SpriteFrames_rgk6b")

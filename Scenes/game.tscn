@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw53ag5pl23qc"]
+
+[ext_resource type="PackedScene" uid="uid://pf6p6bq00ynd" path="res://Prefabs/nave.tscn" id="1_6n8gk"]
+
+[node name="Game" type="Node"]
+
+[node name="Nave" parent="." instance=ExtResource("1_6n8gk")]
