@@ -1,9 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://dw53ag5pl23qc"]
+[gd_scene load_steps=5 format=3 uid="uid://dw53ag5pl23qc"]
 
 [ext_resource type="PackedScene" uid="uid://pf6p6bq00ynd" path="res://Prefabs/nave.tscn" id="1_6n8gk"]
 [ext_resource type="Script" path="res://Scripts/Nave.cs" id="2_0cgae"]
+[ext_resource type="Script" path="res://Scripts/ParallaxBackground.cs" id="3_v8cfb"]
+[ext_resource type="Texture2D" uid="uid://bhchj3kad64g4" path="res://Sprites/Parallax/BackdropBlackLittleSparkBlack.png" id="4_by1rg"]
 
 [node name="Game" type="Node"]
 
 [node name="Nave" parent="." instance=ExtResource("1_6n8gk")]
 script = ExtResource("2_0cgae")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("3_v8cfb")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(0, 1177.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(581, 579)
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("4_by1rg")
