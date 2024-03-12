@@ -3,7 +3,7 @@ using System;
 
 public partial class Nave : Node2D
 {
-	[Export] PackedScene laserNode = ResourceLoader.Load<PackedScene>("res://Prefabs/laser.tscn");
+	[Export] PackedScene laserNode = ResourceLoader.Load<PackedScene>("res://Prefabs/laser.tscn"); 
 
 	Sprite2D body;
     Timer timer;
