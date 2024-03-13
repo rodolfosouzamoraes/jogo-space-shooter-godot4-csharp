@@ -4,6 +4,7 @@ using System;
 public partial class Enemy : Node2D
 {
     Timer timer;
+    int enemyLife = 100;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -28,5 +29,18 @@ public partial class Enemy : Node2D
     private void DestroyEnemy()
     {
         QueueFree();
+    }
+
+    public void OnNode2DAreaEntered(Node2D area)
+    {
+        GD.Print(area.Name);
+        if(area.Name == "LaserBody")
+        {
+            enemyLife -= 25;
+            if(enemyLife <= 0)
+            {
+                DestroyEnemy();
+            }
+        }
     }
 }
