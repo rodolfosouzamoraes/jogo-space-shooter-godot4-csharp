@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/Nave.cs" id="2_0cgae"]
 [ext_resource type="Script" path="res://Scripts/ParallaxBackground.cs" id="3_v8cfb"]
 [ext_resource type="Texture2D" uid="uid://bhchj3kad64g4" path="res://Sprites/Parallax/BackdropBlackLittleSparkBlack.png" id="4_by1rg"]
-[ext_resource type="PackedScene" uid="uid://ckj7gogra57ei" path="res://Prefabs/enemy.tscn" id="5_or00o"]
+[ext_resource type="Script" path="res://Scripts/InstantiateEnemies.cs" id="6_r4rd7"]
 
 [node name="Game" type="Node"]
 
@@ -22,5 +22,5 @@ position = Vector2(581, 579)
 scale = Vector2(2.3, 2.3)
 texture = ExtResource("4_by1rg")
 
-[node name="Enemy" parent="." instance=ExtResource("5_or00o")]
-position = Vector2(565, -71)
+[node name="InstantiateEnemies" type="Node2D" parent="."]
+script = ExtResource("6_r4rd7")

@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://Scripts/Laser.cs" id="1_okh77"]
 [ext_resource type="Texture2D" uid="uid://cbv0gpyr11yvn" path="res://Sprites/Laser/laserRed01.png" id="2_1f4nb"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v0uch"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bc5y6"]
 radius = 3.0
 height = 50.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1negf"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r3gyb"]
 radius = 5.0
 height = 54.0
 
@@ -18,16 +18,16 @@ script = ExtResource("1_okh77")
 position = Vector2(0, -75)
 texture = ExtResource("2_1f4nb")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -75)
-shape = SubResource("CapsuleShape2D_v0uch")
-
 [node name="LaserBody" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LaserBody"]
 position = Vector2(0, -75)
-shape = SubResource("CapsuleShape2D_1negf")
+shape = SubResource("CapsuleShape2D_bc5y6")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -76)
+shape = SubResource("CapsuleShape2D_r3gyb")
 
 [connection signal="body_entered" from="Area2D" to="." method="OnNode2DAreaEntered"]

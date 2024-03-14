@@ -33,7 +33,6 @@ public partial class Enemy : Node2D
 
     public void OnNode2DAreaEntered(Node2D area)
     {
-        GD.Print(area.Name);
         if(area.Name == "LaserBody")
         {
             enemyLife -= 25;
