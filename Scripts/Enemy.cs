@@ -3,6 +3,8 @@ using System;
 
 public partial class Enemy : Node2D
 {
+    [Export] PackedScene explosion = ResourceLoader.Load<PackedScene>("res://Prefabs/explosion.tscn");
+
     Timer timer;
     int enemyLife = 100;
 
@@ -38,6 +40,10 @@ public partial class Enemy : Node2D
             enemyLife -= 25;
             if(enemyLife <= 0)
             {
+                
+                Node explosionNode = explosion.Instantiate();
+                GetParent().AddChild(explosionNode);
+                explosionNode.GetNode<Node2D>(explosionNode.GetPath()).Position = new Vector2(Position.X, Position.Y);
                 DestroyEnemy();
             }
         }
