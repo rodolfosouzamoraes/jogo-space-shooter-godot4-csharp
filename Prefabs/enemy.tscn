@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ckj7gogra57ei"]
+[gd_scene load_steps=27 format=3 uid="uid://ckj7gogra57ei"]
 
 [ext_resource type="Texture2D" uid="uid://d3pjva4e1u0vs" path="res://Sprites/enemyBlue1.png" id="1_aboo6"]
 [ext_resource type="Script" path="res://Scripts/Enemy.cs" id="1_j2xdl"]
@@ -95,6 +95,12 @@ animations = [{
 "speed": 24.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_41uci"]
+radius = 25.02
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_weyup"]
+radius = 39.0
+
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_j2xdl")
 
@@ -107,3 +113,15 @@ autoplay = "default"
 
 [node name="Body" type="Sprite2D" parent="."]
 texture = ExtResource("1_aboo6")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_41uci")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_weyup")
+
+[connection signal="body_entered" from="Area2D" to="." method="OnNode2DAreaEntered"]

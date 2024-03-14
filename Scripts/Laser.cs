@@ -31,4 +31,11 @@ public partial class Laser : Node2D
         QueueFree();
     }
 
+    public void OnNode2DAreaEntered(Node2D area)
+    {
+        if(area.Name != "LaserBody")
+        {
+            DestroyLaser();
+        }
+    }
 }
