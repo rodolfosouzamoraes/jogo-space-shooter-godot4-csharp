@@ -3,9 +3,10 @@ using System;
 
 public partial class Nave : Node2D
 {
-	[Export] PackedScene laserNode = ResourceLoader.Load<PackedScene>("res://Prefabs/laser.tscn"); 
+	[Export] PackedScene laserNode = ResourceLoader.Load<PackedScene>("res://Prefabs/laser.tscn");
+    [Export] PackedScene explosion = ResourceLoader.Load<PackedScene>("res://Prefabs/explosion.tscn");
 
-	Sprite2D body;
+    Sprite2D body;
     Timer timer;
     bool isFire;
 
@@ -58,4 +59,25 @@ public partial class Nave : Node2D
 		AddChild(laser);
 		laser.GetNode<Node2D>(laser.GetPath()).Position = new Vector2(body.Position.X, body.Position.Y);
 	}
+
+	public void OnNode2DAreaEntered(Node2D area)
+	{
+		if(area.Name!= "LaserBody" && area.Name!= "PlayerBody")
+		{
+            Game gameNode = GetParent().GetNode<Game>(".");
+            gameNode.DecrementLife();
+			if(gameNode.LifePlayer < 0)
+			{
+                Node explosionNode = explosion.Instantiate();
+                GetParent().AddChild(explosionNode);
+                explosionNode.GetNode<Node2D>(explosionNode.GetPath()).Position = new Vector2(body.Position.X, body.Position.Y);
+				DestroyPlayer();
+            }
+        }
+	}
+
+    private void DestroyPlayer()
+    {
+		QueueFree();
+    }
 }

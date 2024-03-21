@@ -95,11 +95,11 @@ animations = [{
 "speed": 24.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_kffgm"]
+radius = 26.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_w5hdy"]
 radius = 35.3553
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_yqw5w"]
-radius = 27.0185
 
 [node name="Enemy" type="Node2D"]
 z_index = -1
@@ -115,14 +115,14 @@ autoplay = "default"
 [node name="Body" type="Sprite2D" parent="."]
 texture = ExtResource("1_aboo6")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="EnemyBody" type="CharacterBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyBody"]
+shape = SubResource("CircleShape2D_kffgm")
+
+[node name="Area2D" type="Area2D" parent="EnemyBody"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyBody/Area2D"]
 shape = SubResource("CircleShape2D_w5hdy")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("CircleShape2D_yqw5w")
-
-[connection signal="body_entered" from="Area2D" to="." method="OnNode2DAreaEntered"]
+[connection signal="body_entered" from="EnemyBody/Area2D" to="." method="OnNode2DAreaEntered"]

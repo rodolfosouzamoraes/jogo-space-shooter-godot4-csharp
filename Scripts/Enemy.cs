@@ -40,14 +40,22 @@ public partial class Enemy : Node2D
             enemyLife -= 25;
             if(enemyLife <= 0)
             {
-                
-                Node explosionNode = explosion.Instantiate();
-                GetParent().AddChild(explosionNode);
-                explosionNode.GetNode<Node2D>(explosionNode.GetPath()).Position = new Vector2(Position.X, Position.Y);
-                Game gameNode = GetParent().GetParent().GetNode<Game>(".");
-                gameNode.IncrementScore(125);
-                DestroyEnemy();
+                ExplosionEnemy();
             }
         }
+        else if(area.Name == "PlayerBody")
+        {
+            ExplosionEnemy();
+        }
+    }
+
+    private void ExplosionEnemy()
+    {
+        Node explosionNode = explosion.Instantiate();
+        GetParent().AddChild(explosionNode);
+        explosionNode.GetNode<Node2D>(explosionNode.GetPath()).Position = new Vector2(Position.X, Position.Y);
+        Game gameNode = GetParent().GetParent().GetNode<Game>(".");
+        gameNode.IncrementScore(125);
+        DestroyEnemy();
     }
 }
