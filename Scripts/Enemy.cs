@@ -44,6 +44,8 @@ public partial class Enemy : Node2D
                 Node explosionNode = explosion.Instantiate();
                 GetParent().AddChild(explosionNode);
                 explosionNode.GetNode<Node2D>(explosionNode.GetPath()).Position = new Vector2(Position.X, Position.Y);
+                Game gameNode = GetParent().GetParent().GetNode<Game>(".");
+                gameNode.IncrementScore(125);
                 DestroyEnemy();
             }
         }

@@ -1,12 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://dw53ag5pl23qc"]
+[gd_scene load_steps=9 format=3 uid="uid://dw53ag5pl23qc"]
 
 [ext_resource type="PackedScene" uid="uid://pf6p6bq00ynd" path="res://Prefabs/nave.tscn" id="1_6n8gk"]
+[ext_resource type="Script" path="res://Scripts/Game.cs" id="1_xp2e6"]
 [ext_resource type="Script" path="res://Scripts/Nave.cs" id="2_0cgae"]
 [ext_resource type="Script" path="res://Scripts/ParallaxBackground.cs" id="3_v8cfb"]
 [ext_resource type="Texture2D" uid="uid://bhchj3kad64g4" path="res://Sprites/Parallax/BackdropBlackLittleSparkBlack.png" id="4_by1rg"]
+[ext_resource type="Texture2D" uid="uid://dagtw0acfyk84" path="res://Sprites/UI/Top.png" id="6_576il"]
 [ext_resource type="Script" path="res://Scripts/InstantiateEnemies.cs" id="6_r4rd7"]
+[ext_resource type="FontFile" uid="uid://brm4ihgpy028o" path="res://Font/ka1.ttf" id="7_c75y5"]
 
 [node name="Game" type="Node"]
+script = ExtResource("1_xp2e6")
 
 [node name="Nave" parent="." instance=ExtResource("1_6n8gk")]
 script = ExtResource("2_0cgae")
@@ -24,3 +28,23 @@ texture = ExtResource("4_by1rg")
 
 [node name="InstantiateEnemies" type="Node2D" parent="."]
 script = ExtResource("6_r4rd7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Top" type="Node2D" parent="CanvasLayer"]
+
+[node name="Bar" type="Sprite2D" parent="CanvasLayer/Top"]
+position = Vector2(572.5, 13.5)
+scale = Vector2(1.13056, 0.407407)
+texture = ExtResource("6_576il")
+
+[node name="Score" type="Label" parent="CanvasLayer/Top"]
+offset_left = 870.0
+offset_top = 1.0
+offset_right = 1146.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("7_c75y5")
+theme_override_font_sizes/font_size = 26
+text = "999999999999"
+horizontal_alignment = 2
+vertical_alignment = 1
