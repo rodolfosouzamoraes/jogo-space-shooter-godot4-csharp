@@ -1,19 +1,19 @@
-[gd_scene load_steps=9 format=3 uid="uid://dw53ag5pl23qc"]
+[gd_scene load_steps=10 format=3 uid="uid://dw53ag5pl23qc"]
 
 [ext_resource type="PackedScene" uid="uid://pf6p6bq00ynd" path="res://Prefabs/nave.tscn" id="1_6n8gk"]
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_x75sy"]
-[ext_resource type="Script" path="res://Scripts/Nave.cs" id="2_0cgae"]
 [ext_resource type="Script" path="res://Scripts/ParallaxBackground.cs" id="3_v8cfb"]
 [ext_resource type="Texture2D" uid="uid://bhchj3kad64g4" path="res://Sprites/Parallax/BackdropBlackLittleSparkBlack.png" id="4_by1rg"]
 [ext_resource type="Texture2D" uid="uid://ck8b314ibic23" path="res://Sprites/UI/UI/Top.png" id="6_hvi30"]
 [ext_resource type="Script" path="res://Scripts/InstantiateEnemies.cs" id="6_r4rd7"]
 [ext_resource type="FontFile" uid="uid://b25vbx1hc25af" path="res://Font/Font/ka1.ttf" id="7_qxqxe"]
+[ext_resource type="Texture2D" uid="uid://b4yboapwj4x7o" path="res://Sprites/UI/UI/playerNotLife.png" id="9_7f3oq"]
+[ext_resource type="Texture2D" uid="uid://njvokhxr46fj" path="res://Sprites/UI/UI/playerLife3_red.png" id="10_t57uf"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_x75sy")
 
 [node name="Nave" parent="." instance=ExtResource("1_6n8gk")]
-script = ExtResource("2_0cgae")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource("3_v8cfb")
@@ -48,3 +48,27 @@ theme_override_font_sizes/font_size = 26
 text = "9999999999"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="LifeOff1" type="Sprite2D" parent="CanvasLayer/Top"]
+position = Vector2(24, 18)
+texture = ExtResource("9_7f3oq")
+
+[node name="LifeOff2" type="Sprite2D" parent="CanvasLayer/Top"]
+position = Vector2(61, 18)
+texture = ExtResource("9_7f3oq")
+
+[node name="LifeOff3" type="Sprite2D" parent="CanvasLayer/Top"]
+position = Vector2(98, 18)
+texture = ExtResource("9_7f3oq")
+
+[node name="LifeOn1" type="Sprite2D" parent="CanvasLayer/Top"]
+position = Vector2(24, 18)
+texture = ExtResource("10_t57uf")
+
+[node name="LifeOn2" type="Sprite2D" parent="CanvasLayer/Top"]
+position = Vector2(61, 18)
+texture = ExtResource("10_t57uf")
+
+[node name="LifeOn3" type="Sprite2D" parent="CanvasLayer/Top"]
+position = Vector2(98, 18)
+texture = ExtResource("10_t57uf")
