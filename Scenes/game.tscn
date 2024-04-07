@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dw53ag5pl23qc"]
+[gd_scene load_steps=11 format=3 uid="uid://dw53ag5pl23qc"]
 
 [ext_resource type="PackedScene" uid="uid://pf6p6bq00ynd" path="res://Prefabs/nave.tscn" id="1_6n8gk"]
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_x75sy"]
 [ext_resource type="Script" path="res://Scripts/ParallaxBackground.cs" id="3_v8cfb"]
 [ext_resource type="Texture2D" uid="uid://bhchj3kad64g4" path="res://Sprites/Parallax/BackdropBlackLittleSparkBlack.png" id="4_by1rg"]
+[ext_resource type="Script" path="res://Scripts/InstantiateBoss.cs" id="6_2liky"]
 [ext_resource type="Texture2D" uid="uid://ck8b314ibic23" path="res://Sprites/UI/UI/Top.png" id="6_hvi30"]
 [ext_resource type="Script" path="res://Scripts/InstantiateEnemies.cs" id="6_r4rd7"]
 [ext_resource type="FontFile" uid="uid://b25vbx1hc25af" path="res://Font/Font/ka1.ttf" id="7_qxqxe"]
@@ -28,6 +29,9 @@ texture = ExtResource("4_by1rg")
 
 [node name="InstantiateEnemies" type="Node2D" parent="."]
 script = ExtResource("6_r4rd7")
+
+[node name="InstantiateBoss" type="Node2D" parent="."]
+script = ExtResource("6_2liky")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
