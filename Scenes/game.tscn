@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dw53ag5pl23qc"]
+[gd_scene load_steps=14 format=3 uid="uid://dw53ag5pl23qc"]
 
 [ext_resource type="PackedScene" uid="uid://pf6p6bq00ynd" path="res://Prefabs/nave.tscn" id="1_6n8gk"]
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_xp2e6"]
@@ -10,9 +10,13 @@
 [ext_resource type="Script" path="res://Scripts/InstantiateBoss.cs" id="7_fuh83"]
 [ext_resource type="Texture2D" uid="uid://hv5eupdayl1n" path="res://Sprites/UI/playerNotLife.png" id="9_k4mc6"]
 [ext_resource type="Texture2D" uid="uid://3ro8k35h2gyf" path="res://Sprites/UI/playerLife3_red.png" id="10_7qwjr"]
+[ext_resource type="Texture2D" uid="uid://qujtnw7fp877" path="res://Sprites/UI/background.png" id="11_p27kv"]
+[ext_resource type="FontFile" uid="uid://oou3170fgi5w" path="res://Font/multivac-interference.ttf" id="12_ojwnh"]
+[ext_resource type="FontFile" uid="uid://ckqiii6l5ywr4" path="res://Font/CGF Locust Resistance.ttf" id="13_aqcb2"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_xp2e6")
+metadata/_edit_vertical_guides_ = [574.0]
 
 [node name="Nave" parent="." instance=ExtResource("1_6n8gk")]
 
@@ -82,3 +86,99 @@ texture = ExtResource("10_7qwjr")
 position = Vector2(140, 20)
 scale = Vector2(1.38462, 1.38462)
 texture = ExtResource("10_7qwjr")
+
+[node name="GameOver" type="Node2D" parent="CanvasLayer"]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/GameOver"]
+modulate = Color(1, 1, 1, 0.784314)
+position = Vector2(576.5, 324)
+scale = Vector2(2.28711, 1.30469)
+texture = ExtResource("11_p27kv")
+
+[node name="txtTitleGameOver" type="Label" parent="CanvasLayer/GameOver"]
+offset_left = 382.0
+offset_top = 96.0
+offset_right = 767.0
+offset_bottom = 168.0
+theme_override_fonts/font = ExtResource("12_ojwnh")
+theme_override_font_sizes/font_size = 50
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="txtScoreNow" type="Label" parent="CanvasLayer/GameOver"]
+offset_left = 436.0
+offset_top = 206.0
+offset_right = 712.0
+offset_bottom = 245.0
+theme_override_fonts/font = ExtResource("7_c75y5")
+theme_override_font_sizes/font_size = 26
+text = "Score now"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreFinal" type="Label" parent="CanvasLayer/GameOver"]
+offset_left = 358.0
+offset_top = 248.0
+offset_right = 790.0
+offset_bottom = 309.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("7_c75y5")
+theme_override_font_sizes/font_size = 40
+text = "99999999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="txtBestScore" type="Label" parent="CanvasLayer/GameOver"]
+offset_left = 436.0
+offset_top = 313.0
+offset_right = 712.0
+offset_bottom = 352.0
+theme_override_fonts/font = ExtResource("7_c75y5")
+theme_override_font_sizes/font_size = 26
+text = "Best Score"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BestScore" type="Label" parent="CanvasLayer/GameOver"]
+offset_left = 358.0
+offset_top = 355.0
+offset_right = 790.0
+offset_bottom = 416.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_c75y5")
+theme_override_font_sizes/font_size = 40
+text = "99999999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="txtBestScore2" type="Label" parent="CanvasLayer/GameOver"]
+offset_left = 436.0
+offset_top = 467.0
+offset_right = 712.0
+offset_bottom = 506.0
+theme_override_fonts/font = ExtResource("7_c75y5")
+theme_override_font_sizes/font_size = 26
+text = "Try again?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="btnYes" type="Button" parent="CanvasLayer/GameOver"]
+offset_left = 300.0
+offset_top = 534.0
+offset_right = 530.0
+offset_bottom = 582.0
+theme_override_fonts/font = ExtResource("13_aqcb2")
+theme_override_font_sizes/font_size = 35
+text = "YES"
+
+[node name="btnNo" type="Button" parent="CanvasLayer/GameOver"]
+offset_left = 620.0
+offset_top = 534.0
+offset_right = 850.0
+offset_bottom = 582.0
+theme_override_fonts/font = ExtResource("13_aqcb2")
+theme_override_font_sizes/font_size = 35
+text = "No"
+
+[connection signal="pressed" from="CanvasLayer/GameOver/btnYes" to="." method="TryAgain"]
