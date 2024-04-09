@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dw53ag5pl23qc"]
+[gd_scene load_steps=14 format=3 uid="uid://dw53ag5pl23qc"]
 
 [ext_resource type="PackedScene" uid="uid://pf6p6bq00ynd" path="res://Prefabs/nave.tscn" id="1_6n8gk"]
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_x75sy"]
@@ -10,6 +10,9 @@
 [ext_resource type="FontFile" uid="uid://b25vbx1hc25af" path="res://Font/Font/ka1.ttf" id="7_qxqxe"]
 [ext_resource type="Texture2D" uid="uid://b4yboapwj4x7o" path="res://Sprites/UI/UI/playerNotLife.png" id="9_7f3oq"]
 [ext_resource type="Texture2D" uid="uid://njvokhxr46fj" path="res://Sprites/UI/UI/playerLife3_red.png" id="10_t57uf"]
+[ext_resource type="Texture2D" uid="uid://chn6ly3bhitc4" path="res://Sprites/UI/background.png" id="11_gsp3o"]
+[ext_resource type="FontFile" uid="uid://cwytft8d3p37h" path="res://Font/Font/multivac-interference.ttf" id="12_jhc04"]
+[ext_resource type="FontFile" uid="uid://013sfrx7oymf" path="res://Font/Font/CGF Locust Resistance.ttf" id="13_chtrf"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_x75sy")
@@ -76,3 +79,99 @@ texture = ExtResource("10_t57uf")
 [node name="LifeOn3" type="Sprite2D" parent="CanvasLayer/Top"]
 position = Vector2(98, 18)
 texture = ExtResource("10_t57uf")
+
+[node name="GameOver" type="Node2D" parent="CanvasLayer"]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/GameOver"]
+modulate = Color(1, 1, 1, 0.784314)
+position = Vector2(569.5, 322)
+scale = Vector2(2.32227, 1.31641)
+texture = ExtResource("11_gsp3o")
+
+[node name="TitleGameOver" type="Label" parent="CanvasLayer/GameOver"]
+offset_left = 382.0
+offset_top = 96.0
+offset_right = 767.0
+offset_bottom = 168.0
+theme_override_fonts/font = ExtResource("12_jhc04")
+theme_override_font_sizes/font_size = 50
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TitleScoreNow" type="Label" parent="CanvasLayer/GameOver"]
+offset_left = 437.0
+offset_top = 207.0
+offset_right = 713.0
+offset_bottom = 246.0
+theme_override_fonts/font = ExtResource("7_qxqxe")
+theme_override_font_sizes/font_size = 26
+text = "Score Now"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreFinal" type="Label" parent="CanvasLayer/GameOver"]
+offset_left = 358.0
+offset_top = 248.0
+offset_right = 790.0
+offset_bottom = 309.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("7_qxqxe")
+theme_override_font_sizes/font_size = 40
+text = "999999999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BestScore" type="Label" parent="CanvasLayer/GameOver"]
+offset_left = 358.0
+offset_top = 355.0
+offset_right = 790.0
+offset_bottom = 416.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_qxqxe")
+theme_override_font_sizes/font_size = 40
+text = "999999999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TitleBestScore" type="Label" parent="CanvasLayer/GameOver"]
+offset_left = 436.0
+offset_top = 313.0
+offset_right = 712.0
+offset_bottom = 352.0
+theme_override_fonts/font = ExtResource("7_qxqxe")
+theme_override_font_sizes/font_size = 26
+text = "Best Score"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TitleTryAgain" type="Label" parent="CanvasLayer/GameOver"]
+offset_left = 436.0
+offset_top = 467.0
+offset_right = 712.0
+offset_bottom = 506.0
+theme_override_fonts/font = ExtResource("7_qxqxe")
+theme_override_font_sizes/font_size = 26
+text = "Try Again?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="btnYes" type="Button" parent="CanvasLayer/GameOver"]
+offset_left = 300.0
+offset_top = 534.0
+offset_right = 530.0
+offset_bottom = 582.0
+theme_override_fonts/font = ExtResource("13_chtrf")
+theme_override_font_sizes/font_size = 35
+text = "YES"
+
+[node name="btnNo" type="Button" parent="CanvasLayer/GameOver"]
+offset_left = 605.0
+offset_top = 534.0
+offset_right = 835.0
+offset_bottom = 582.0
+theme_override_fonts/font = ExtResource("13_chtrf")
+theme_override_font_sizes/font_size = 35
+text = "NO"
+
+[connection signal="pressed" from="CanvasLayer/GameOver/btnYes" to="." method="TryAgain"]
