@@ -1,0 +1,213 @@
+[gd_scene load_steps=18 format=3 uid="uid://2sr6jgmyl613"]
+
+[ext_resource type="Texture2D" uid="uid://chn6ly3bhitc4" path="res://Sprites/UI/background.png" id="1_8y4gp"]
+[ext_resource type="Script" path="res://Scripts/Menu.cs" id="1_rl1y8"]
+[ext_resource type="FontFile" path="res://Font/13_Misa.TTF" id="2_kpbpo"]
+[ext_resource type="FontFile" path="res://Font/CGF Locust Resistance.ttf" id="3_h8v8v"]
+[ext_resource type="FontFile" path="res://Font/ka1.ttf" id="4_h8tuy"]
+[ext_resource type="Texture2D" uid="uid://cn0f8hvls587k" path="res://Sprites/Meteors/meteorBrown_big1.png" id="5_hfjbf"]
+[ext_resource type="Texture2D" uid="uid://bhtoyfadey6de" path="res://Sprites/Meteors/meteorBrown_big2.png" id="6_4632u"]
+[ext_resource type="Texture2D" uid="uid://b0olx2p0qrx2p" path="res://Sprites/Meteors/meteorBrown_big3.png" id="7_fxq31"]
+[ext_resource type="Texture2D" uid="uid://c0ud37mo3soag" path="res://Sprites/Meteors/meteorBrown_big4.png" id="8_u4682"]
+[ext_resource type="Texture2D" uid="uid://fi0o1ssqr3he" path="res://Sprites/Effects/star1.png" id="9_3t31w"]
+[ext_resource type="Texture2D" uid="uid://c8quaoabsfc54" path="res://Sprites/Effects/star2.png" id="10_k5whg"]
+[ext_resource type="Texture2D" uid="uid://d31wf6kb1jt7g" path="res://Sprites/Effects/star3.png" id="11_emidt"]
+[ext_resource type="Texture2D" uid="uid://cv1cipndvbr2j" path="res://Sprites/Nave/playerShip3_red.png" id="12_sbo8n"]
+[ext_resource type="Texture2D" uid="uid://bu2ku7x03ewr" path="res://Sprites/Nave/Turbine/Thruster_00000.png" id="12_x66xh"]
+[ext_resource type="Texture2D" uid="uid://d3pjva4e1u0vs" path="res://Sprites/enemyBlue1.png" id="13_apkgd"]
+[ext_resource type="Texture2D" uid="uid://cql0loi56nlrj" path="res://Sprites/laserBlue06.png" id="14_b8nok"]
+[ext_resource type="Texture2D" uid="uid://cbv0gpyr11yvn" path="res://Sprites/Laser/laserRed01.png" id="15_clr0i"]
+
+[node name="Menu" type="Node"]
+script = ExtResource("1_rl1y8")
+metadata/_edit_vertical_guides_ = [576.0]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(577.5, 323.5)
+scale = Vector2(2.31836, 1.32617)
+texture = ExtResource("1_8y4gp")
+
+[node name="Title" type="Label" parent="CanvasLayer"]
+offset_left = 259.0
+offset_top = 124.0
+offset_right = 895.0
+offset_bottom = 218.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_kpbpo")
+theme_override_font_sizes/font_size = 80
+text = "Space Shooter"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="btnPlay" type="Button" parent="CanvasLayer"]
+offset_left = 452.0
+offset_top = 336.0
+offset_right = 702.0
+offset_bottom = 406.0
+theme_override_fonts/font = ExtResource("3_h8v8v")
+theme_override_font_sizes/font_size = 30
+text = "Play"
+
+[node name="btnExit" type="Button" parent="CanvasLayer"]
+offset_left = 487.0
+offset_top = 424.0
+offset_right = 667.0
+offset_bottom = 474.0
+theme_override_fonts/font = ExtResource("3_h8v8v")
+theme_override_font_sizes/font_size = 20
+text = "Exit"
+
+[node name="txtBestScore" type="Label" parent="CanvasLayer"]
+offset_left = 439.0
+offset_top = 234.0
+offset_right = 715.0
+offset_bottom = 273.0
+theme_override_fonts/font = ExtResource("4_h8tuy")
+theme_override_font_sizes/font_size = 15
+text = "Best Score"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BestScore" type="Label" parent="CanvasLayer"]
+offset_left = 474.0
+offset_top = 278.0
+offset_right = 681.0
+offset_bottom = 302.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_h8tuy")
+theme_override_font_sizes/font_size = 20
+text = "99999999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Credits" type="Label" parent="CanvasLayer"]
+offset_left = 438.0
+offset_top = 596.0
+offset_right = 714.0
+offset_bottom = 635.0
+theme_override_fonts/font = ExtResource("4_h8tuy")
+theme_override_font_sizes/font_size = 20
+text = "By Rodolfo Moraes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Elements" type="Node2D" parent="CanvasLayer"]
+
+[node name="Meteor" type="Sprite2D" parent="CanvasLayer/Elements"]
+position = Vector2(100, 85)
+texture = ExtResource("5_hfjbf")
+
+[node name="Meteor2" type="Sprite2D" parent="CanvasLayer/Elements"]
+position = Vector2(260, 327)
+texture = ExtResource("6_4632u")
+
+[node name="Meteor3" type="Sprite2D" parent="CanvasLayer/Elements"]
+position = Vector2(714, 534)
+texture = ExtResource("7_fxq31")
+
+[node name="Meteor4" type="Sprite2D" parent="CanvasLayer/Elements"]
+position = Vector2(833, 277)
+texture = ExtResource("8_u4682")
+
+[node name="Star" type="Sprite2D" parent="CanvasLayer/Elements"]
+position = Vector2(347, 465)
+texture = ExtResource("9_3t31w")
+
+[node name="Star7" type="Sprite2D" parent="CanvasLayer/Elements"]
+position = Vector2(1072, 208)
+texture = ExtResource("9_3t31w")
+
+[node name="Star4" type="Sprite2D" parent="CanvasLayer/Elements"]
+position = Vector2(992, 587)
+texture = ExtResource("9_3t31w")
+
+[node name="Star2" type="Sprite2D" parent="CanvasLayer/Elements"]
+position = Vector2(177, 557)
+texture = ExtResource("10_k5whg")
+
+[node name="Star8" type="Sprite2D" parent="CanvasLayer/Elements"]
+position = Vector2(387, 59)
+texture = ExtResource("10_k5whg")
+
+[node name="Star5" type="Sprite2D" parent="CanvasLayer/Elements"]
+position = Vector2(88, 323)
+texture = ExtResource("10_k5whg")
+
+[node name="Star10" type="Sprite2D" parent="CanvasLayer/Elements"]
+position = Vector2(1058, 373)
+texture = ExtResource("10_k5whg")
+
+[node name="Star3" type="Sprite2D" parent="CanvasLayer/Elements"]
+position = Vector2(792, 81)
+texture = ExtResource("11_emidt")
+
+[node name="Star9" type="Sprite2D" parent="CanvasLayer/Elements"]
+position = Vector2(513, 570)
+texture = ExtResource("11_emidt")
+
+[node name="Star6" type="Sprite2D" parent="CanvasLayer/Elements"]
+position = Vector2(868, 424)
+texture = ExtResource("11_emidt")
+
+[node name="NaveUI4" type="Sprite2D" parent="CanvasLayer/Elements"]
+position = Vector2(1077.72, 62.3711)
+rotation = -2.0839
+scale = Vector2(0.213281, 0.213281)
+texture = ExtResource("12_x66xh")
+
+[node name="NaveUI" type="Sprite2D" parent="CanvasLayer/Elements"]
+position = Vector2(1019.72, 95.3711)
+rotation = -2.0839
+texture = ExtResource("12_sbo8n")
+
+[node name="NaveUI5" type="Sprite2D" parent="CanvasLayer/Elements"]
+position = Vector2(80, 500)
+rotation = 1.0472
+scale = Vector2(0.187839, 0.187839)
+texture = ExtResource("12_x66xh")
+
+[node name="NaveUI6" type="Sprite2D" parent="CanvasLayer/Elements"]
+position = Vector2(362, 559)
+rotation = 1.0472
+scale = Vector2(0.187839, 0.187839)
+texture = ExtResource("12_x66xh")
+
+[node name="NaveUI2" type="Sprite2D" parent="CanvasLayer/Elements"]
+position = Vector2(405, 533)
+rotation = -2.0839
+texture = ExtResource("13_apkgd")
+
+[node name="NaveUI3" type="Sprite2D" parent="CanvasLayer/Elements"]
+position = Vector2(125, 474)
+rotation = -2.0839
+texture = ExtResource("13_apkgd")
+
+[node name="Laser" type="Sprite2D" parent="CanvasLayer/Elements"]
+position = Vector2(360, 348)
+rotation = -5.23599
+texture = ExtResource("14_b8nok")
+
+[node name="Laser2" type="Sprite2D" parent="CanvasLayer/Elements"]
+position = Vector2(773, 351)
+rotation = -5.23599
+texture = ExtResource("14_b8nok")
+
+[node name="Laser3" type="Sprite2D" parent="CanvasLayer/Elements"]
+position = Vector2(917, 119)
+rotation = -5.23599
+texture = ExtResource("14_b8nok")
+
+[node name="Laser4" type="Sprite2D" parent="CanvasLayer/Elements"]
+position = Vector2(767, 233)
+rotation = -2.0839
+texture = ExtResource("15_clr0i")
+
+[node name="Laser5" type="Sprite2D" parent="CanvasLayer/Elements"]
+position = Vector2(278, 436)
+rotation = -2.0839
+texture = ExtResource("15_clr0i")
+
+[connection signal="pressed" from="CanvasLayer/btnPlay" to="." method="StartGame"]
+[connection signal="pressed" from="CanvasLayer/btnExit" to="." method="ExitGame"]
