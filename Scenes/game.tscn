@@ -175,3 +175,4 @@ theme_override_font_sizes/font_size = 35
 text = "NO"
 
 [connection signal="pressed" from="CanvasLayer/GameOver/btnYes" to="." method="TryAgain"]
+[connection signal="pressed" from="CanvasLayer/GameOver/btnNo" to="." method="GotoMenu"]

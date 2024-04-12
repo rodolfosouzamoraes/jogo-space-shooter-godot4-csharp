@@ -94,6 +94,6 @@ public partial class Game : Node
 
 	public void GotoMenu()
 	{
-
+		GetTree().ChangeSceneToFile("res://Scenes/menu.tscn");
 	}
 }
