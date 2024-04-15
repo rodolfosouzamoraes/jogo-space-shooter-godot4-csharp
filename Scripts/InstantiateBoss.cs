@@ -7,13 +7,14 @@ public partial class InstantiateBoss : Node2D
 
     Timer timer;
     bool isInstantiate = false;
+    double waitTimerInstantiate = 30;
     public override void _Ready()
     {
         Callable callable = Callable.From(() => InstantiateEnemy());
 
         timer = new Timer();
         timer.OneShot = true;
-        timer.WaitTime = 30;
+        timer.WaitTime = waitTimerInstantiate;
         timer.Autostart = true;
         timer.Connect("timeout", callable);
         AddChild(timer);
@@ -35,5 +36,15 @@ public partial class InstantiateBoss : Node2D
         Node enemyNode = boss.Instantiate();
         AddChild(enemyNode);
         enemyNode.GetNode<Node2D>(enemyNode.GetPath()).Position = new Vector2(positionX, -102);
+    }
+
+    public void DecrementWaitTimer()
+    {
+        waitTimerInstantiate -= 2;
+        if (waitTimerInstantiate < 15)
+        {
+            waitTimerInstantiate = 15;
+        }
+        timer.WaitTime = waitTimerInstantiate;
     }
 }
