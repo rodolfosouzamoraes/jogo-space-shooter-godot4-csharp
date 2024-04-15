@@ -15,6 +15,8 @@ public partial class Game : Node
     Label scoreBest;
     int scoreBestTotal;
 
+    Node2D pauseNode;
+
     public int LifePlayer
     {
         get { return lifePlayer; }
@@ -43,6 +45,9 @@ public partial class Game : Node
         }
         scoreBest.Text = scoreBestTotal.ToString();
         gameOverNode.Hide();
+
+        pauseNode = GetNode<Node2D>("CanvasLayer/PauseGame");
+        pauseNode.Hide();
     }
 
 
@@ -94,5 +99,28 @@ public partial class Game : Node
     public void GotoMenu()
     {
         GetTree().ChangeSceneToFile("res://Scenes/menu.tscn");
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        if (@event is InputEventKey eventKey)
+        {
+            if(eventKey.Pressed && eventKey.Keycode == Key.Escape)
+            {
+                PausedGame();
+            }
+        }
+    }
+
+    public void PausedGame()
+    {
+        pauseNode.Show();
+        GetTree().Paused = true;
+    }
+    
+    public void ContinueGame()
+    {
+        pauseNode.Hide();
+        GetTree().Paused = false;
     }
 }

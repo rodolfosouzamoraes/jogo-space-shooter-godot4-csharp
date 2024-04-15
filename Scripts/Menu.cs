@@ -9,6 +9,7 @@ public partial class Menu : Node
 	{
 		scoreBest = GetNode<Label>("CanvasLayer/BestScore");
 		scoreBest.Text = PlayerPrefs.GetInt("best_score").ToString();
+        GetTree().Paused = false;
     }
 
 	public void StartGame()
