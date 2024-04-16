@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dw53ag5pl23qc"]
+[gd_scene load_steps=15 format=3 uid="uid://dw53ag5pl23qc"]
 
 [ext_resource type="PackedScene" uid="uid://pf6p6bq00ynd" path="res://Prefabs/nave.tscn" id="1_6n8gk"]
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_x75sy"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ck8b314ibic23" path="res://Sprites/UI/UI/Top.png" id="6_hvi30"]
 [ext_resource type="Script" path="res://Scripts/InstantiateEnemies.cs" id="6_r4rd7"]
 [ext_resource type="FontFile" uid="uid://b25vbx1hc25af" path="res://Font/Font/ka1.ttf" id="7_qxqxe"]
+[ext_resource type="Script" path="res://Scripts/DifficultyIncrease.cs" id="7_vrtvs"]
 [ext_resource type="Texture2D" uid="uid://b4yboapwj4x7o" path="res://Sprites/UI/UI/playerNotLife.png" id="9_7f3oq"]
 [ext_resource type="Texture2D" uid="uid://njvokhxr46fj" path="res://Sprites/UI/UI/playerLife3_red.png" id="10_t57uf"]
 [ext_resource type="Texture2D" uid="uid://chn6ly3bhitc4" path="res://Sprites/UI/background.png" id="11_gsp3o"]
@@ -35,6 +36,9 @@ script = ExtResource("6_r4rd7")
 
 [node name="InstantiateBoss" type="Node2D" parent="."]
 script = ExtResource("6_2liky")
+
+[node name="DifficultyIncrease" type="Node2D" parent="."]
+script = ExtResource("7_vrtvs")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -174,5 +178,45 @@ theme_override_fonts/font = ExtResource("13_chtrf")
 theme_override_font_sizes/font_size = 35
 text = "NO"
 
+[node name="PauseGame" type="Node2D" parent="CanvasLayer"]
+process_mode = 2
+
+[node name="Background" type="Sprite2D" parent="CanvasLayer/PauseGame"]
+modulate = Color(1, 1, 1, 0.705882)
+position = Vector2(574, 323.5)
+scale = Vector2(2.29297, 1.30273)
+texture = ExtResource("11_gsp3o")
+
+[node name="TitlePaused" type="Label" parent="CanvasLayer/PauseGame"]
+offset_left = 438.0
+offset_top = 177.0
+offset_right = 712.0
+offset_bottom = 257.0
+theme_override_fonts/font = ExtResource("12_jhc04")
+theme_override_font_sizes/font_size = 60
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="btnContinue" type="Button" parent="CanvasLayer/PauseGame"]
+offset_left = 460.0
+offset_top = 288.0
+offset_right = 690.0
+offset_bottom = 336.0
+theme_override_fonts/font = ExtResource("13_chtrf")
+theme_override_font_sizes/font_size = 30
+text = "Continue"
+
+[node name="btnExit" type="Button" parent="CanvasLayer/PauseGame"]
+offset_left = 460.0
+offset_top = 360.0
+offset_right = 690.0
+offset_bottom = 408.0
+theme_override_fonts/font = ExtResource("13_chtrf")
+theme_override_font_sizes/font_size = 30
+text = "Exit"
+
 [connection signal="pressed" from="CanvasLayer/GameOver/btnYes" to="." method="TryAgain"]
 [connection signal="pressed" from="CanvasLayer/GameOver/btnNo" to="." method="GotoMenu"]
+[connection signal="pressed" from="CanvasLayer/PauseGame/btnContinue" to="." method="ContinueGame"]
+[connection signal="pressed" from="CanvasLayer/PauseGame/btnExit" to="." method="GotoMenu"]
