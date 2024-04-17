@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dw53ag5pl23qc"]
+[gd_scene load_steps=16 format=3 uid="uid://dw53ag5pl23qc"]
 
 [ext_resource type="PackedScene" uid="uid://pf6p6bq00ynd" path="res://Prefabs/nave.tscn" id="1_6n8gk"]
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_xp2e6"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://chn6ly3bhitc4" path="res://Sprites/UI/background.png" id="11_p27kv"]
 [ext_resource type="FontFile" uid="uid://oou3170fgi5w" path="res://Font/multivac-interference.ttf" id="12_ojwnh"]
 [ext_resource type="FontFile" uid="uid://ckqiii6l5ywr4" path="res://Font/CGF Locust Resistance.ttf" id="13_aqcb2"]
+[ext_resource type="Script" path="res://Scripts/InstantiatePowerUps.cs" id="15_uaaj7"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_xp2e6")
@@ -40,6 +41,9 @@ script = ExtResource("7_fuh83")
 
 [node name="DifficultyIncrease" type="Node2D" parent="."]
 script = ExtResource("7_y8h30")
+
+[node name="InstantiatePowerUps" type="Node2D" parent="."]
+script = ExtResource("15_uaaj7")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

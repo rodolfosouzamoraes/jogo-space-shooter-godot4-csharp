@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Text;
 
 public partial class Nave : Node2D
 {
@@ -9,6 +10,7 @@ public partial class Nave : Node2D
     Sprite2D body;
     Timer timer;
     bool isFire;
+	int totalPowerUps;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -26,6 +28,8 @@ public partial class Nave : Node2D
 		timer.Autostart = true;
 		timer.Connect("timeout", callable);
 		AddChild(timer);
+
+		totalPowerUps = 0;
     }
 
 	private void EnableFire()
@@ -38,7 +42,48 @@ public partial class Nave : Node2D
 	{
 		if(isFire == true)
 		{
-            Fire();
+			switch (totalPowerUps)
+			{
+				case 0:
+                    Fire(0, 0, 0);
+                    break;
+                case 1:
+                    Fire(-15, 0, 0);
+                    Fire(15, 0, 0);
+                    break;
+				case 2:
+					Fire(0,0,0);
+                    Fire(-30,0,0);
+                    Fire(30,0,0);
+                    break;
+				case 3:
+                    Fire(0, 0, 0);
+                    Fire(-30, 0, 0);
+                    Fire(30, 0, 0);
+                    Fire(-50, 60, 0);
+                    Fire(50, 60, 0);
+                    break;
+                case 4:
+                    Fire(0, 0, 0);
+                    Fire(-30, 0, 0);
+                    Fire(30, 0, 0);
+                    Fire(-50, 60, 0);
+                    Fire(50, 60, 0);
+                    Fire(-45, 26, -27);
+                    Fire(45, 26, 27);
+                    break;
+                case 5:
+                    Fire(0, 0, 0);
+                    Fire(-30, 0, 0);
+                    Fire(30, 0, 0);
+                    Fire(-50, 60, 0);
+                    Fire(50, 60, 0);
+                    Fire(-45, 26, -27);
+                    Fire(45, 26, 27);
+                    Fire(-10, 30, -60);
+                    Fire(10, 30, 60);
+                    break;
+            }            
 			isFire = false;
 			timer.Start();
         }
@@ -53,26 +98,41 @@ public partial class Nave : Node2D
         }
     }
 
-	private void Fire()
+	private void Fire(int differenceX, int differenceY, float differenceR)
 	{
 		Node laser = laserNode.Instantiate();
 		AddChild(laser);
-		laser.GetNode<Node2D>(laser.GetPath()).Position = new Vector2(body.Position.X, body.Position.Y);
+		laser.GetNode<Node2D>(laser.GetPath()).Position = new Vector2(body.Position.X + differenceX, body.Position.Y + differenceY);
+		laser.GetNode<Node2D>(laser.GetPath()).RotationDegrees += differenceR;
 	}
 
 	public void OnNode2DAreaEntered(Node2D area)
 	{
-		if(area.Name!= "LaserBody" && area.Name!= "PlayerBody")
+		switch (area.Name)
 		{
-            Game gameNode = GetParent().GetNode<Game>(".");
-            gameNode.DecrementLife();
-			if(gameNode.LifePlayer < 0)
-			{
-                Node explosionNode = explosion.Instantiate();
-                GetParent().AddChild(explosionNode);
-                explosionNode.GetNode<Node2D>(explosionNode.GetPath()).Position = new Vector2(body.Position.X, body.Position.Y);
-				DestroyPlayer();
-            }
+			case "PowerUpBody":
+				totalPowerUps++;
+				if(totalPowerUps > 5)
+				{
+					totalPowerUps = 5;
+				}
+				break;
+			case "LaserBody":
+            case "PlayerBody":
+				return;
+			default:
+                Game gameNode = GetParent().GetNode<Game>(".");
+                gameNode.DecrementLife();
+                totalPowerUps = 0;
+                if (gameNode.LifePlayer < 0)
+                {
+                    Node explosionNode = explosion.Instantiate();
+                    GetParent().AddChild(explosionNode);
+                    explosionNode.GetNode<Node2D>(explosionNode.GetPath()).Position = new Vector2(body.Position.X, body.Position.Y);
+                    DestroyPlayer();
+                }
+                break;
+
         }
 	}
 
