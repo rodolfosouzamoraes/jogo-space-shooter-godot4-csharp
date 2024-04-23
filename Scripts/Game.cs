@@ -17,6 +17,8 @@ public partial class Game : Node
 
     Node2D pauseNode;
 
+    Label levelNow;
+
     public int LifePlayer
     {
         get { return lifePlayer; }
@@ -48,6 +50,8 @@ public partial class Game : Node
 
         pauseNode = GetNode<Node2D>("CanvasLayer/PauseGame");
         pauseNode.Hide();
+
+        levelNow = GetNode<Label>("CanvasLayer/Top/Level");
     }
 
 
@@ -122,5 +126,10 @@ public partial class Game : Node
     {
         pauseNode.Hide();
         GetTree().Paused = false;
+    }
+
+    public void ChangeLevelText(string level)
+    {
+        levelNow.Text = $"Nv.{level}";
     }
 }

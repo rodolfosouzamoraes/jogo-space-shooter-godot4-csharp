@@ -1,25 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2ab5xbq4u0hj"]
+[gd_scene load_steps=4 format=3 uid="uid://ci1p6u7ymsill"]
 
-[ext_resource type="Script" path="res://Scripts/PowerUp.cs" id="1_kkcvx"]
-[ext_resource type="Texture2D" uid="uid://c4bdlml11hp4k" path="res://Sprites/PowerUps/bolt_gold.png" id="2_qhiwg"]
+[ext_resource type="Script" path="res://Scripts/PowerUp.cs" id="1_nj6qs"]
+[ext_resource type="Texture2D" uid="uid://c4bdlml11hp4k" path="res://Sprites/PowerUp/bolt_gold.png" id="2_c46s0"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vr4i6"]
-radius = 10.0499
+[sub_resource type="CircleShape2D" id="CircleShape2D_47m3s"]
+radius = 16.0
 
-[node name="power_up" type="Node2D"]
-script = ExtResource("1_kkcvx")
+[node name="PowerUp" type="Node2D"]
+script = ExtResource("1_nj6qs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_qhiwg")
+texture = ExtResource("2_c46s0")
 
 [node name="PowerUpBody" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="PowerUpBody"]
-shape = SubResource("CircleShape2D_vr4i6")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PowerUpBody"]
+shape = SubResource("CircleShape2D_47m3s")
 
 [node name="Area2D" type="Area2D" parent="PowerUpBody"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PowerUpBody/Area2D"]
-shape = SubResource("CircleShape2D_vr4i6")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PowerUpBody/Area2D"]
+shape = SubResource("CircleShape2D_47m3s")
 
 [connection signal="body_entered" from="PowerUpBody/Area2D" to="." method="OnNode2DAreaEntered"]

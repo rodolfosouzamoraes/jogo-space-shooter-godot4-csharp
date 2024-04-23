@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4bdlml11hp4k"
-path="res://.godot/imported/bolt_gold.png-db69160238a92df24a15bd83a81a9d63.ctex"
+uid="uid://cnv7qynw31jhy"
+path="res://.godot/imported/enemyGreen4.png-c035680f127a1afca69f0714921fa8f3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/PowerUps/bolt_gold.png"
-dest_files=["res://.godot/imported/bolt_gold.png-db69160238a92df24a15bd83a81a9d63.ctex"]
+source_file="res://Sprites/SkinEnemies/enemyGreen4.png"
+dest_files=["res://.godot/imported/enemyGreen4.png-c035680f127a1afca69f0714921fa8f3.ctex"]
 
 [params]
 

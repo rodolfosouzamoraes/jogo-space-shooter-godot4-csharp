@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Reflection.Emit;
 
 public partial class DifficultyIncrease : Node2D
 {
@@ -7,6 +8,14 @@ public partial class DifficultyIncrease : Node2D
     bool isInstantiate = false;
     InstantiateEnemies instantiateEnemies;
     InstantiateBoss instantiateBoss;
+    
+    int level = 1;
+
+    Game game;
+    public int Level
+    {
+        get { return level; }
+    }
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
@@ -21,11 +30,14 @@ public partial class DifficultyIncrease : Node2D
         timer.Autostart = true;
         timer.Connect("timeout", callable);
         AddChild(timer);
+
+        game = GetParent().GetNode<Game>(".");
+        
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
-	{
+	{        
         if (isInstantiate == true)
         {
             isInstantiate = false;
@@ -35,9 +47,19 @@ public partial class DifficultyIncrease : Node2D
 
     private void IncreaseDifficultyLevel()
     {
-        isInstantiate = true;
-        instantiateEnemies.DecrementWaitTimer();
-        instantiateBoss.DecrementWaitTimer();
-        GD.Print("Aumentou a dificuldade");
+        level++;
+        if(level == 5)
+        {
+            game.ChangeLevelText("MAX");
+            isInstantiate = false;
+        }
+        else
+        {
+            game.ChangeLevelText(level.ToString());
+            isInstantiate = true;
+        }        
+        instantiateEnemies.DecrementWaitTimer(level);
+        instantiateBoss.DecrementWaitTimer(level);
+        
     }
 }

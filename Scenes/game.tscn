@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://Scripts/DifficultyIncrease.cs" id="7_y8h30"]
 [ext_resource type="Texture2D" uid="uid://hv5eupdayl1n" path="res://Sprites/UI/playerNotLife.png" id="9_k4mc6"]
 [ext_resource type="Texture2D" uid="uid://3ro8k35h2gyf" path="res://Sprites/UI/playerLife3_red.png" id="10_7qwjr"]
-[ext_resource type="Texture2D" uid="uid://chn6ly3bhitc4" path="res://Sprites/UI/background.png" id="11_p27kv"]
+[ext_resource type="Texture2D" uid="uid://qujtnw7fp877" path="res://Sprites/UI/background.png" id="11_p27kv"]
 [ext_resource type="FontFile" uid="uid://oou3170fgi5w" path="res://Font/multivac-interference.ttf" id="12_ojwnh"]
 [ext_resource type="FontFile" uid="uid://ckqiii6l5ywr4" path="res://Font/CGF Locust Resistance.ttf" id="13_aqcb2"]
 [ext_resource type="Script" path="res://Scripts/InstantiatePowerUps.cs" id="15_uaaj7"]
@@ -65,6 +65,17 @@ text = "999999999999"
 horizontal_alignment = 2
 vertical_alignment = 1
 
+[node name="Level" type="Label" parent="CanvasLayer/Top"]
+offset_left = 437.0
+offset_top = 1.0
+offset_right = 713.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("7_c75y5")
+theme_override_font_sizes/font_size = 26
+text = "nv.1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="LifeOff1" type="Sprite2D" parent="CanvasLayer/Top"]
 position = Vector2(40, 20)
 scale = Vector2(1.38462, 1.38462)
@@ -96,6 +107,7 @@ scale = Vector2(1.38462, 1.38462)
 texture = ExtResource("10_7qwjr")
 
 [node name="GameOver" type="Node2D" parent="CanvasLayer"]
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/GameOver"]
 modulate = Color(1, 1, 1, 0.784314)
@@ -191,6 +203,7 @@ text = "No"
 
 [node name="PauseGame" type="Node2D" parent="CanvasLayer"]
 process_mode = 2
+visible = false
 
 [node name="Background" type="Sprite2D" parent="CanvasLayer/PauseGame"]
 modulate = Color(1, 1, 1, 0.784314)

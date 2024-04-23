@@ -8,9 +8,13 @@ public partial class Boss : Node2D
 
     Timer timer;
     Timer timerFire;
-    int enemyLife = 1000;
+    float enemyLife = 1000;
     bool isFire;
     Sprite2D body;
+
+    CompressedTexture2D textureNv3 = ResourceLoader.Load<CompressedTexture2D>("res://Sprites/SkinEnemies/enemyGreen4.png");
+    CompressedTexture2D textureNv4 = ResourceLoader.Load<CompressedTexture2D>("res://Sprites/SkinEnemies/enemyBlue4.png");
+    CompressedTexture2D textureNv5 = ResourceLoader.Load<CompressedTexture2D>("res://Sprites/SkinEnemies/enemyBlack4.png");
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -18,6 +22,7 @@ public partial class Boss : Node2D
         body = GetNodeOrNull<Sprite2D>("BossBody");
         ConfigureTimerLife();
         ConfigureTimerFire();
+
     }
 
     private void ConfigureTimerLife()
@@ -101,5 +106,25 @@ public partial class Boss : Node2D
         laser.GetNode<Node2D>(laser.GetPath()).Position = new Vector2(body.Position.X, body.Position.Y+86);
     }
 
+    public void SetSkinBoss(int level)
+    {
+        switch (level)
+        {
+            case 3:
+                body.Texture = textureNv3;
+                break;
+            case 4:
+                body.Texture = textureNv4;
+                break;
+            case 5:
+                body.Texture = textureNv5;
+                break;
+        }
+    }
+
+    public void SetLifeBoss(float life)
+    {
+        enemyLife = life;
+    }
 
 }
