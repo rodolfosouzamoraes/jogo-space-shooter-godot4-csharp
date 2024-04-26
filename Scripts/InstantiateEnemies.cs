@@ -9,6 +9,9 @@ public partial class InstantiateEnemies : Node2D
     Timer timer;
     bool isInstantiate = false;
     double waitTimerInstantiate = 0.5;
+
+    int levelNow = 1;
+    float lifeEnemy = 100;
     public override void _Ready()
     {
         Callable callable = Callable.From(() => InstantiateEnemy());
@@ -36,10 +39,13 @@ public partial class InstantiateEnemies : Node2D
         int positionX = new Random().Next(50,1101);
         Node enemyNode = enemy.Instantiate();
         AddChild(enemyNode);
-        enemyNode.GetNode<Node2D>(enemyNode.GetPath()).Position = new Vector2(positionX, -70); 
+        enemyNode.GetNode<Node2D>(enemyNode.GetPath()).Position = new Vector2(positionX, -70);
+        Enemy enemyInstance = enemyNode.GetNode<Enemy>(enemyNode.GetPath());
+        enemyInstance.SetSkinEnemy(levelNow);
+        enemyInstance.SetLifeEnemy(lifeEnemy);
     }
 
-    public void DecrementWaitTimer()
+    public void DecrementWaitTimer(int level)
     {
         waitTimerInstantiate -= 0.1;
         if(waitTimerInstantiate < 0.1)
@@ -47,5 +53,8 @@ public partial class InstantiateEnemies : Node2D
             waitTimerInstantiate = 0.1;
         }
         timer.WaitTime = waitTimerInstantiate;
+
+        levelNow = level;
+        lifeEnemy = lifeEnemy * 1.5f;
     }
 }

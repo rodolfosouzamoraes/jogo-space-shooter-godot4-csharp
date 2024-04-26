@@ -7,6 +7,9 @@ public partial class DifficultyIncrease : Node2D
     bool isInstantiate = false;
     InstantiateEnemies instantiateEnemies;
     InstantiateBoss instantiateBoss;
+
+    int level = 1;
+    Game game;
     public override void _Ready()
     {
         instantiateEnemies = GetParent().GetNode<InstantiateEnemies>("InstantiateEnemies");
@@ -20,6 +23,8 @@ public partial class DifficultyIncrease : Node2D
         timer.Autostart = true;
         timer.Connect("timeout", callable);
         AddChild(timer);
+
+        game = GetParent().GetNode<Game>(".");
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,8 +39,18 @@ public partial class DifficultyIncrease : Node2D
 
     private void IncreaseDifficultyLevel()
     {
-        isInstantiate = true;
-        instantiateEnemies.DecrementWaitTimer();
+        level++;
+        if(level == 5)
+        {
+            isInstantiate = false;
+            game.ChangeLevelText("MAX");
+        }
+        else
+        {
+            isInstantiate = true;
+            game.ChangeLevelText(level.ToString());
+        }
+        instantiateEnemies.DecrementWaitTimer(level);
         instantiateBoss.DecrementWaitTimer();
     }
 }

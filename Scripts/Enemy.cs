@@ -6,7 +6,12 @@ public partial class Enemy : Node2D
     [Export] PackedScene explosion = ResourceLoader.Load<PackedScene>("res://Prefabs/explosion.tscn");
 
     Timer timer;
-    int enemyLife = 100;
+    float enemyLife = 100;
+
+    Sprite2D body;
+    CompressedTexture2D textureNv3 = ResourceLoader.Load<CompressedTexture2D>("res://Sprites/SkinEnemies/enemyGreen1.png");
+    CompressedTexture2D textureNv4 = ResourceLoader.Load<CompressedTexture2D>("res://Sprites/SkinEnemies/enemyRed1.png");
+    CompressedTexture2D textureNv5 = ResourceLoader.Load<CompressedTexture2D>("res://Sprites/SkinEnemies/enemyBlack1.png");
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -19,6 +24,8 @@ public partial class Enemy : Node2D
         timer.Autostart = true;
         timer.Connect("timeout", callable);
         AddChild(timer);
+
+        body = GetNode<Sprite2D>("Body");
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -57,5 +64,26 @@ public partial class Enemy : Node2D
         Game game = GetParent().GetParent().GetNode<Game>(".");
         game.IncrementScore(125);
         DestroyEnemy();
+    }
+
+    public void SetSkinEnemy(int level)
+    {
+        switch(level)
+        {
+            case 3:
+                body.Texture = textureNv3;
+                break;
+            case 4:
+                body.Texture = textureNv4;
+                break;
+            case 5:
+                body.Texture = textureNv5;
+                break;
+        }
+    }
+
+    public void SetLifeEnemy(float life)
+    {
+        enemyLife = life;
     }
 }
