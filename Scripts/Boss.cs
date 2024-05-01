@@ -7,12 +7,15 @@ public partial class Boss : Node2D
     [Export] PackedScene laserNode = ResourceLoader.Load<PackedScene>("res://Prefabs/laser_enemy.tscn");
 
     Timer timer;
-    int enemyLife = 1000;
+    float enemyLife = 1000;
 
     Timer timerLaser;
     bool isFire;
 
     Sprite2D body;
+    CompressedTexture2D textureNv3 = ResourceLoader.Load<CompressedTexture2D>("res://Sprites/SkinEnemies/enemyGreen4.png");
+    CompressedTexture2D textureNv4 = ResourceLoader.Load<CompressedTexture2D>("res://Sprites/SkinEnemies/enemyBlue4.png");
+    CompressedTexture2D textureNv5 = ResourceLoader.Load<CompressedTexture2D>("res://Sprites/SkinEnemies/enemyBlack4.png");
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -95,5 +98,26 @@ public partial class Boss : Node2D
         Game game = GetParent().GetParent().GetNode<Game>(".");
         game.IncrementScore(500);
         DestroyEnemy();
+    }
+
+    public void SetSkinBoss(int level)
+    {
+        switch (level)
+        {
+            case 3:
+                body.Texture = textureNv3;
+                break;
+            case 4:
+                body.Texture = textureNv4;
+                break;
+            case 5:
+                body.Texture = textureNv5;
+                break;
+        }
+    }
+
+    public void SetLifeBoss(float life)
+    {
+        enemyLife = life;
     }
 }

@@ -3,14 +3,17 @@ using System;
 
 public partial class InstantiateBoss : Node2D
 {
-    [Export] PackedScene enemy = ResourceLoader.Load<PackedScene>("res://Prefabs/boss.tscn");
+    [Export] PackedScene boss = ResourceLoader.Load<PackedScene>("res://Prefabs/boss.tscn");
 
     Timer timer;
     bool isInstantiate = false;
     double waitTimerInstantiate = 30;
+
+    int levelNow = 1;
+    float lifeBoss = 1000;
     public override void _Ready()
     {
-        Callable callable = Callable.From(() => InstantiateEnemy());
+        Callable callable = Callable.From(() => InstantiateNewBoss());
 
         timer = new Timer();
         timer.OneShot = true;
@@ -29,16 +32,19 @@ public partial class InstantiateBoss : Node2D
         }
     }
 
-    public void InstantiateEnemy()
+    public void InstantiateNewBoss()
     {
         isInstantiate = true;
         int positionX = new Random().Next(50, 1101);
-        Node enemyNode = enemy.Instantiate();
-        AddChild(enemyNode);
-        enemyNode.GetNode<Node2D>(enemyNode.GetPath()).Position = new Vector2(positionX, -70);
+        Node bossNode = boss.Instantiate();
+        AddChild(bossNode);
+        bossNode.GetNode<Node2D>(bossNode.GetPath()).Position = new Vector2(positionX, -70);
+        Boss bossInstance = bossNode.GetNode<Boss>(bossNode.GetPath());
+        bossInstance.SetSkinBoss(levelNow);
+        bossInstance.SetLifeBoss(lifeBoss);
     }
 
-    public void DecrementWaitTimer()
+    public void DecrementWaitTimer(int level)
     {
         waitTimerInstantiate -= 2;
         if (waitTimerInstantiate < 15)
@@ -46,5 +52,8 @@ public partial class InstantiateBoss : Node2D
             waitTimerInstantiate = 15;
         }
         timer.WaitTime = waitTimerInstantiate;
+
+        levelNow = level;
+        lifeBoss = lifeBoss * 1.5f;
     }
 }

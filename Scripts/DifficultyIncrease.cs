@@ -51,6 +51,6 @@ public partial class DifficultyIncrease : Node2D
             game.ChangeLevelText(level.ToString());
         }
         instantiateEnemies.DecrementWaitTimer(level);
-        instantiateBoss.DecrementWaitTimer();
+        instantiateBoss.DecrementWaitTimer(level);
     }
 }
