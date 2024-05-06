@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://ci1p6u7ymsill"]
 
+[ext_resource type="Script" path="res://Scripts/PowerUpMove.cs" id="1_afl26"]
 [ext_resource type="Texture2D" uid="uid://cg2h4lr02873b" path="res://Sprites/PowerUp/bolt_gold.png" id="1_ig3gt"]
-[ext_resource type="Script" path="res://Scripts/PowerUp.cs" id="1_nj6qs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_47m3s"]
 radius = 16.0
 
 [node name="PowerUp" type="Node2D"]
-script = ExtResource("1_nj6qs")
+script = ExtResource("1_afl26")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_ig3gt")

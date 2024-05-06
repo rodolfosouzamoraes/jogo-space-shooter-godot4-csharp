@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class PowerUp : Node2D
+public partial class PowerUpMove : Node2D
 {
     Timer timer;
 

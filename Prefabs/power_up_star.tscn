@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cj8v53sew4cqw"]
+
+[ext_resource type="Script" path="res://Scripts/PowerUpMove.cs" id="1_estgc"]
+[ext_resource type="Texture2D" uid="uid://dde2yeh0kng56" path="res://Sprites/PowerUp/powerupYellow_star.png" id="1_j6igl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hvcyp"]
+radius = 16.0
+
+[node name="PowerUpStar" type="Node2D"]
+script = ExtResource("1_estgc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_j6igl")
+
+[node name="PowerUpStarBody" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PowerUpStarBody"]
+shape = SubResource("CircleShape2D_hvcyp")
+
+[node name="Area2D" type="Area2D" parent="PowerUpStarBody"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PowerUpStarBody/Area2D"]
+shape = SubResource("CircleShape2D_hvcyp")
+
+[connection signal="body_entered" from="PowerUpStarBody/Area2D" to="." method="OnNode2DAreaEntered"]

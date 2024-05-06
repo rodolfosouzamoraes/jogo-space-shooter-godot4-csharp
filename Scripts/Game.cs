@@ -82,7 +82,28 @@ public partial class Game : Node
 		}
 	}
 
-	private void ShowGameOver()
+    public void IncrementLife()
+    {
+        lifePlayer++;
+		if(lifePlayer > 3)
+		{
+			lifePlayer = 3;
+		}
+        switch (lifePlayer)
+        {
+            case 3:
+                lifeOn3.Show();
+                break;
+            case 2:
+                lifeOn2.Show();
+                break;
+            case 1:
+                lifeOn1.Show();
+                break;
+        }
+    }
+
+    private void ShowGameOver()
 	{
 		scoreFinal.Text = scoreTotal.ToString();
 

@@ -121,6 +121,14 @@ public partial class Nave : Node2D
 			case "LaserBody":
 			case "PlayerBody":
 				break;
+			case "PowerUpEngineBody":
+                Game gameNode3 = GetParent().GetNode<Game>(".");
+				gameNode3.IncrementLife();
+                break;
+			case "PowerUpStarBody":
+                Game gameNode2 = GetParent().GetNode<Game>(".");
+				gameNode2.IncrementScore(5000);
+                break;
 			default:
                 Game gameNode = GetParent().GetNode<Game>(".");
                 gameNode.DecrementLife();
