@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvo1vbw2prpqh"]
+
+[ext_resource type="Script" path="res://Scripts/PowerUpMove.cs" id="1_1idie"]
+[ext_resource type="Texture2D" uid="uid://m8uu633f4a0o" path="res://Sprites/PowerUp/shield_bronze.png" id="1_70swq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ukk32"]
+radius = 16.0
+
+[node name="PowerUpShield" type="Node2D"]
+script = ExtResource("1_1idie")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_70swq")
+
+[node name="PowerUpShieldBody" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PowerUpShieldBody"]
+shape = SubResource("CircleShape2D_ukk32")
+
+[node name="Area2D" type="Area2D" parent="PowerUpShieldBody"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PowerUpShieldBody/Area2D"]
+shape = SubResource("CircleShape2D_ukk32")
+
+[connection signal="body_entered" from="PowerUpShieldBody/Area2D" to="." method="OnNode2DAreaEntered"]

@@ -42,6 +42,7 @@ public partial class Enemy : Node2D
 
     public void OnNode2DAreaEntered(Node2D area)
     {
+        //GD.Print($"Colidiu: {area.Name}");
         if(area.Name == "LaserBody")
         {
             enemyLife -= 25;
@@ -50,7 +51,7 @@ public partial class Enemy : Node2D
                 ExplosionEnemy();
             }
         }
-        else if (area.Name == "PlayerBody")
+        else if (area.Name == "PlayerBody" || area.Name == "PlayerBodyShield")
         {
             ExplosionEnemy();
         }

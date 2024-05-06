@@ -33,7 +33,7 @@ public partial class Laser : Node2D
 
     public void OnNode2DAreaEntered(Node2D area)
     {
-        if(area.Name != "LaserBody")
+        if(area.Name != "LaserBody" && area.Name != "PlayerBodyShield")
         {
             DestroyLaser();
         }        

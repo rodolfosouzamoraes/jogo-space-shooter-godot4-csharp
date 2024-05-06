@@ -6,18 +6,35 @@ public partial class InstantiatePowerUps : Node2D
     [Export] PackedScene powerUp = ResourceLoader.Load<PackedScene>("res://Prefabs/power_up.tscn");
     [Export] PackedScene powerUpStar = ResourceLoader.Load<PackedScene>("res://Prefabs/power_up_star.tscn");
     [Export] PackedScene powerUpEngine = ResourceLoader.Load<PackedScene>("res://Prefabs/power_up_engine.tscn");
+    [Export] PackedScene powerUpShield = ResourceLoader.Load<PackedScene>("res://Prefabs/power_up_shield.tscn");
+
 
     Timer timerPowerUp;
     Timer timerPowerUpStar;
     Timer timerPowerUpEngine;
+    Timer timerPowerUpShield;
     bool isInstantiatePowerUp = false;
     bool isInstantiatePowerUpStar = false;
     bool isInstantiatePowerUpEngine = false;
+    bool isInstantiatePowerUpShield = false;
     public override void _Ready()
     {
         ConfigureTimerPowerUp();
         ConfigureTimerPowerUpStar();
         ConfigureTimerPowerUpEngine();
+        ConfigureTimerPowerUpShield();
+    }
+
+    private void ConfigureTimerPowerUpShield()
+    {
+        Callable callable = Callable.From(() => InstantiatePowerUpShield());
+
+        timerPowerUpShield = new Timer();
+        timerPowerUpShield.OneShot = true;
+        timerPowerUpShield.WaitTime = 90;
+        timerPowerUpShield.Autostart = true;
+        timerPowerUpShield.Connect("timeout", callable);
+        AddChild(timerPowerUpShield);
     }
 
     private void ConfigureTimerPowerUp()
@@ -75,6 +92,12 @@ public partial class InstantiatePowerUps : Node2D
             isInstantiatePowerUpEngine = false;
             timerPowerUpEngine.Start();
         }
+
+        if (isInstantiatePowerUpShield == true)
+        {
+            isInstantiatePowerUpShield = false;
+            timerPowerUpShield.Start();
+        }
     }
 
     public void InstantiatePowerUp()
@@ -102,5 +125,14 @@ public partial class InstantiatePowerUps : Node2D
         Node powerUpEngineNode = powerUpEngine.Instantiate();
         AddChild(powerUpEngineNode);
         powerUpEngineNode.GetNode<Node2D>(powerUpEngineNode.GetPath()).Position = new Vector2(positionX, -70);
+    }
+
+    public void InstantiatePowerUpShield()
+    {
+        isInstantiatePowerUpShield= true;
+        int positionX = new Random().Next(50, 1101);
+        Node powerUpShieldNode = powerUpShield.Instantiate();
+        AddChild(powerUpShieldNode);
+        powerUpShieldNode.GetNode<Node2D>(powerUpShieldNode.GetPath()).Position = new Vector2(positionX, -70);
     }
 }
