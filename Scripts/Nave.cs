@@ -8,7 +8,11 @@ public partial class Nave : Node2D
 
 
     Sprite2D body;
+	CharacterBody2D shieldBody;
+	CollisionShape2D collisionShapeExternal;
+	CollisionShape2D collisionShapeInternal;
     Timer timer;
+	Timer timerShield;
     bool isFire;
 	int totalPowerUp;
 
@@ -17,25 +21,54 @@ public partial class Nave : Node2D
 	{
 
         body = GetNodeOrNull<Sprite2D>("Body");
+		shieldBody = GetNodeOrNull<CharacterBody2D>("Body/PlayerBodyShield");
+		collisionShapeExternal = GetNodeOrNull<CollisionShape2D>("Body/PlayerBodyShield/CollisionShape2D");
+		collisionShapeInternal = GetNodeOrNull<CollisionShape2D>("Body/PlayerBodyShield/Area2D/CollisionShape2D");
+        EnableOrDisableShield(false);
 
 		isFire = false;
 
-		Callable callable = Callable.From(() => EnableFire());
+		ConfigureTimerFire();
+		ConfigureTimerShield();
 
-		timer = new Timer();
-		timer.OneShot = true;
-		timer.WaitTime = 0.1;
-		timer.Autostart = true;
-		timer.Connect("timeout", callable);
-		AddChild(timer);
+        totalPowerUp = 0;
+    }
 
-		totalPowerUp = 0;
+	private void ConfigureTimerShield()
+	{
+        Callable callable = Callable.From(() => EnableOrDisableShield(false));
+
+        timerShield = new Timer();
+        timerShield.OneShot = true;
+        timerShield.WaitTime = 10;
+        timerShield.Autostart = true;
+        timerShield.Connect("timeout", callable);
+        AddChild(timerShield);
+    }
+
+	private void ConfigureTimerFire()
+	{
+        Callable callable = Callable.From(() => EnableFire());
+
+        timer = new Timer();
+        timer.OneShot = true;
+        timer.WaitTime = 0.1;
+        timer.Autostart = true;
+        timer.Connect("timeout", callable);
+        AddChild(timer);
     }
 
 	private void EnableFire()
 	{
 		isFire = true;
     }
+
+	private void EnableOrDisableShield(bool isActive)
+	{
+		shieldBody.Visible = isActive;
+		collisionShapeInternal.SetDeferred("disabled", !isActive);
+		collisionShapeExternal.SetDeferred("disabled", !isActive);
+	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
@@ -120,7 +153,12 @@ public partial class Nave : Node2D
 				break;
 			case "LaserBody":
 			case "PlayerBody":
+			case "PlayerBodyShield":
 				break;
+			case "PowerUpShieldBody":
+				EnableOrDisableShield(true);
+				timerShield.Start();
+                break;
 			case "PowerUpEngineBody":
                 Game gameNode3 = GetParent().GetNode<Game>(".");
 				gameNode3.IncrementLife();
@@ -130,6 +168,7 @@ public partial class Nave : Node2D
 				gameNode2.IncrementScore(5000);
                 break;
 			default:
+				if (shieldBody.Visible == true) return;
                 Game gameNode = GetParent().GetNode<Game>(".");
                 gameNode.DecrementLife();
 				totalPowerUp = 0;

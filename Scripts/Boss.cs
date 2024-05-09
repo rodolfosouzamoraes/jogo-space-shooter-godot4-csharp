@@ -84,7 +84,7 @@ public partial class Boss : Node2D
                 ExplosionEnemy();
             }
         }
-        else if (area.Name == "PlayerBody")
+        else if (area.Name == "PlayerBody" || area.Name == "PlayerBodyShield")
         {
             ExplosionEnemy();
         }
