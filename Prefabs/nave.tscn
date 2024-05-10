@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://pf6p6bq00ynd"]
+[gd_scene load_steps=30 format=3 uid="uid://pf6p6bq00ynd"]
 
 [ext_resource type="Texture2D" uid="uid://cv1cipndvbr2j" path="res://Sprites/Nave/playerShip3_red.png" id="1_7lk6v"]
 [ext_resource type="Script" path="res://Scripts/Nave.cs" id="1_kcuht"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://c7mxvflw1sb8s" path="res://Sprites/Nave/Turbine/Thruster_00018.png" id="20_s2at2"]
 [ext_resource type="Texture2D" uid="uid://blsoj30crefyw" path="res://Sprites/Nave/Turbine/Thruster_00019.png" id="21_m8eh3"]
 [ext_resource type="Texture2D" uid="uid://xnm7bv6vcfxj" path="res://Sprites/Nave/Turbine/Thruster_00020.png" id="22_x3jbm"]
+[ext_resource type="Texture2D" uid="uid://dlnxbqitcboqm" path="res://Sprites/Effects/shield3.png" id="24_g21a0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rgk6b"]
 animations = [{
@@ -102,8 +103,11 @@ radius = 38.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_g7h0a"]
 radius = 38.0132
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xhcyy"]
-radius = 69.029
+[sub_resource type="CircleShape2D" id="CircleShape2D_oa48n"]
+radius = 71.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_15hv8"]
+radius = 71.1126
 
 [node name="Nave" type="Node2D"]
 script = ExtResource("1_kcuht")
@@ -130,14 +134,14 @@ shape = SubResource("CircleShape2D_g7h0a")
 [node name="PlayerBodyShield" type="CharacterBody2D" parent="Body"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body/PlayerBodyShield"]
-shape = SubResource("CircleShape2D_xhcyy")
+shape = SubResource("CircleShape2D_oa48n")
 
 [node name="Area2D" type="Area2D" parent="Body/PlayerBodyShield"]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Body/PlayerBodyShield/Area2D"]
-shape = SubResource("CircleShape2D_xhcyy")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/PlayerBodyShield/Area2D"]
+shape = SubResource("CircleShape2D_15hv8")
 
-[node name="BodyShield" type="Sprite2D" parent="Body/PlayerBodyShield"]
-texture = ExtResource("2_ido6d")
+[node name="Sprite2D" type="Sprite2D" parent="Body/PlayerBodyShield"]
+texture = ExtResource("24_g21a0")
 
 [connection signal="body_entered" from="Body/PlayerBody/Area2D" to="." method="OnNode2DAreaEntered"]

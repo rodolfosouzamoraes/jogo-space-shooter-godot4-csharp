@@ -8,7 +8,6 @@ public partial class InstantiatePowerUps : Node2D
     [Export] PackedScene powerUpEngine = ResourceLoader.Load<PackedScene>("res://Prefabs/power_up_engine.tscn");
     [Export] PackedScene powerUpShield = ResourceLoader.Load<PackedScene>("res://Prefabs/power_up_shield.tscn");
 
-
     Timer timerPowerUp;
     Timer timerPowerUpStar;
     Timer timerPowerUpEngine;
@@ -24,7 +23,6 @@ public partial class InstantiatePowerUps : Node2D
         ConfigureTimerPowerUpEngine();
         ConfigureTimerPowerUpShield();
     }
-
     private void ConfigureTimerPowerUpShield()
     {
         Callable callable = Callable.From(() => InstantiatePowerUpShield());
@@ -129,7 +127,7 @@ public partial class InstantiatePowerUps : Node2D
 
     public void InstantiatePowerUpShield()
     {
-        isInstantiatePowerUpShield= true;
+        isInstantiatePowerUpShield = true;
         int positionX = new Random().Next(50, 1101);
         Node powerUpShieldNode = powerUpShield.Instantiate();
         AddChild(powerUpShieldNode);
