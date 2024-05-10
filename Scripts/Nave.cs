@@ -13,39 +13,23 @@ public partial class Nave : Node2D
 	CollisionShape2D collisionShapeInternal;
     Timer timer;
 	Timer timerShield;
-<<<<<<< HEAD
-    bool isFire = false;
-=======
     bool isFire;
->>>>>>> master
 	int totalPowerUp;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
         body = GetNodeOrNull<Sprite2D>("Body");
-<<<<<<< HEAD
-        shieldBody = GetNodeOrNull<CharacterBody2D>("Body/PlayerBodyShield");
-		shieldBody.Visible = false;
-=======
 		shieldBody = GetNodeOrNull<CharacterBody2D>("Body/PlayerBodyShield");
 		collisionShapeExternal = GetNodeOrNull<CollisionShape2D>("Body/PlayerBodyShield/CollisionShape2D");
 		collisionShapeInternal = GetNodeOrNull<CollisionShape2D>("Body/PlayerBodyShield/Area2D/CollisionShape2D");
         EnableOrDisableShield(false);
->>>>>>> master
 
         collisionShapeExternal = GetNodeOrNull<CollisionShape2D>("Body/PlayerBodyShield/CollisionShape2D");
 		collisionShapeInternal = GetNodeOrNull<CollisionShape2D>("Body/PlayerBodyShield/Area2D/CollisionShape2D2");
 		collisionShapeInternal.SetDeferred("disabled", true);
         collisionShapeExternal.SetDeferred("disabled", true);
 
-<<<<<<< HEAD
-
-        ConfigureTimerFire();
-		ConfigureTimerShield();
-
-        totalPowerUp = 0;
-=======
 		ConfigureTimerFire();
 		ConfigureTimerShield();
 
@@ -62,7 +46,6 @@ public partial class Nave : Node2D
         timerShield.Autostart = true;
         timerShield.Connect("timeout", callable);
         AddChild(timerShield);
->>>>>>> master
     }
 
 	private void ConfigureTimerFire()
@@ -75,28 +58,6 @@ public partial class Nave : Node2D
         timer.Autostart = true;
         timer.Connect("timeout", callable);
         AddChild(timer);
-<<<<<<< HEAD
-    }
-
-	private void ConfigureTimerShield()
-	{
-        Callable callable = Callable.From(() => DisableShield());
-
-        timerShield = new Timer();
-        timerShield.OneShot = true;
-        timerShield.WaitTime = 10;
-        timerShield.Autostart = false;
-        timerShield.Connect("timeout", callable);
-        AddChild(timerShield);
-    }
-
-	private void DisableShield()
-	{
-        shieldBody.Visible = false;
-        collisionShapeInternal.SetDeferred("disabled", true);
-        collisionShapeExternal.SetDeferred("disabled", true);
-=======
->>>>>>> master
     }
 
 	private void EnableFire()
@@ -195,15 +156,6 @@ public partial class Nave : Node2D
 			case "LaserBody":
 			case "PlayerBody":
 			case "PlayerBodyShield":
-<<<<<<< HEAD
-                break;
-			case "PowerUpShieldBody":
-                shieldBody.Visible = true;
-                collisionShapeInternal.SetDeferred("disabled", false);
-                collisionShapeExternal.SetDeferred("disabled", false);
-                timerShield.Start();
-=======
->>>>>>> master
 				break;
 			case "PowerUpShieldBody":
 				EnableOrDisableShield(true);
@@ -218,11 +170,7 @@ public partial class Nave : Node2D
 				gameNode2.IncrementScore(5000);
                 break;
 			default:
-<<<<<<< HEAD
-				if(shieldBody.Visible == true) return;
-=======
 				if (shieldBody.Visible == true) return;
->>>>>>> master
                 Game gameNode = GetParent().GetNode<Game>(".");
                 gameNode.DecrementLife();
 				totalPowerUp = 0;
