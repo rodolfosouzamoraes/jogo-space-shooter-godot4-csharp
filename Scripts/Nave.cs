@@ -25,11 +25,6 @@ public partial class Nave : Node2D
 		collisionShapeInternal = GetNodeOrNull<CollisionShape2D>("Body/PlayerBodyShield/Area2D/CollisionShape2D");
         EnableOrDisableShield(false);
 
-        collisionShapeExternal = GetNodeOrNull<CollisionShape2D>("Body/PlayerBodyShield/CollisionShape2D");
-		collisionShapeInternal = GetNodeOrNull<CollisionShape2D>("Body/PlayerBodyShield/Area2D/CollisionShape2D2");
-		collisionShapeInternal.SetDeferred("disabled", true);
-        collisionShapeExternal.SetDeferred("disabled", true);
-
 		ConfigureTimerFire();
 		ConfigureTimerShield();
 

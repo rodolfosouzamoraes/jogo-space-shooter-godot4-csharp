@@ -12,6 +12,7 @@ public partial class InstantiateEnemies : Node2D
 
     int levelNow = 1;
     float lifeEnemy = 100;
+    Game game;
     public override void _Ready()
     {
         Callable callable = Callable.From(() => InstantiateEnemy());
@@ -22,6 +23,8 @@ public partial class InstantiateEnemies : Node2D
         timer.Autostart = true;
         timer.Connect("timeout", callable);
         AddChild(timer);
+
+        game = GetParent().GetNode<Game>(".");
     }
 
     public override void _Process(double delta)
@@ -35,6 +38,7 @@ public partial class InstantiateEnemies : Node2D
 
     public void InstantiateEnemy()
     {
+        if (game.BigBossOn == true) return;
         isInstantiate = true;
         int positionX = new Random().Next(50,1101);
         Node enemyNode = enemy.Instantiate();

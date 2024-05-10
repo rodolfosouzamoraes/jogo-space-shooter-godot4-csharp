@@ -19,9 +19,17 @@ public partial class Game : Node
 
 	Label levelNow;
 
+	bool bigBossOn = false;
+
 	public int LifePlayer
 	{
 		get { return lifePlayer; }
+	}
+
+	public bool BigBossOn
+	{
+		get { return bigBossOn; }
+		set { bigBossOn = value; }
 	}
 
 	// Called when the node enters the scene tree for the first time.
