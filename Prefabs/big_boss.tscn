@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://40n5yx8w04pd"]
+
+[ext_resource type="Script" path="res://Scripts/BigBoss.cs" id="1_exway"]
+[ext_resource type="Texture2D" uid="uid://sy13xc3l8sg" path="res://Sprites/SkinEnemies/spaceStation_026.png" id="2_axjw7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7cglm"]
+size = Vector2(78, 600)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwboy"]
+size = Vector2(78, 600)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bq1oe"]
+size = Vector2(408, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7x4vh"]
+size = Vector2(408, 66)
+
+[node name="BigBoss" type="Node2D"]
+script = ExtResource("1_exway")
+
+[node name="BigBossBody" type="Sprite2D" parent="."]
+position = Vector2(-5, -1)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_axjw7")
+
+[node name="BigBossBodyVertical" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BigBossBodyVertical"]
+position = Vector2(1, -1)
+shape = SubResource("RectangleShape2D_7cglm")
+
+[node name="Area2D" type="Area2D" parent="BigBossBodyVertical"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BigBossBodyVertical/Area2D"]
+position = Vector2(1, -1)
+shape = SubResource("RectangleShape2D_gwboy")
+
+[node name="BigBossBodyHorizontal" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BigBossBodyHorizontal"]
+position = Vector2(-5, -148)
+shape = SubResource("RectangleShape2D_bq1oe")
+
+[node name="Area2D" type="Area2D" parent="BigBossBodyHorizontal"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BigBossBodyHorizontal/Area2D"]
+position = Vector2(-5, -148)
+shape = SubResource("RectangleShape2D_7x4vh")
