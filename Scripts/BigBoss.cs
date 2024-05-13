@@ -5,6 +5,7 @@ using System.Reflection.Emit;
 public partial class BigBoss : Node2D
 {
     [Export] PackedScene laserNode = ResourceLoader.Load<PackedScene>("res://Prefabs/laser_enemy.tscn");
+    [Export] PackedScene explosion = ResourceLoader.Load<PackedScene>("res://Prefabs/explosion.tscn");
 
     bool isPositionYTarget = false;
 	float positionYTarget = 188;
@@ -34,6 +35,8 @@ public partial class BigBoss : Node2D
     Timer timerLaserFire;
     bool isFire;
     Sprite2D bigBossBody;
+
+    float enemyLife = 100;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
@@ -173,9 +176,13 @@ public partial class BigBoss : Node2D
     public void OnNode2DAreaEntered(Node2D area)
 	{
 		
-		if(area.Name == "PlayerBody" ||  area.Name == "LaserBody")
+		if(area.Name == "LaserBody")
 		{
-            GD.Print($"BigBoss Colidiu: {area.Name}");
+            enemyLife -= 25;
+            if(enemyLife <= 0)
+            {
+                ExplosionEnemy();
+            }
         }
 	}
 
@@ -229,5 +236,22 @@ public partial class BigBoss : Node2D
         GetParent().AddChild(laser);
         laser.GetNode<Node2D>(laser.GetPath()).Position = new Vector2(Position.X, Position.Y);
         laser.GetNode<Node2D>(laser.GetPath()).RotationDegrees += RotationDegrees + differenceR;
+    }
+
+    public void ExplosionEnemy()
+    {
+        Node explosionNode = explosion.Instantiate();
+        GetParent().AddChild(explosionNode);
+        explosionNode.GetNode<Node2D>(explosionNode.GetPath()).Position = new Vector2(Position.X, Position.Y);
+        explosionNode.GetNode<Node2D>(explosionNode.GetPath()).Scale = new Vector2(5, 5);
+        Game game = GetParent().GetNode<Game>(".");
+        game.IncrementScore(100000);
+        game.BigBossOn = false;
+        DestroyEnemy();
+    }
+
+    private void DestroyEnemy()
+    {
+        QueueFree();
     }
 }

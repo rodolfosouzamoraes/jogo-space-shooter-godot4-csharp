@@ -43,12 +43,12 @@ public partial class DifficultyIncrease : Node2D
         if(level == 5)
         {
             isInstantiate = false;
-            game.ChangeLevelText("MAX");
+            game.ChangeLevelText("Nv.MAX");
         }
         else
         {
             isInstantiate = true;
-            game.ChangeLevelText(level.ToString());
+            game.ChangeLevelText($"Nv.{level}");
         }
         instantiateEnemies.DecrementWaitTimer(level);
         instantiateBoss.DecrementWaitTimer(level);

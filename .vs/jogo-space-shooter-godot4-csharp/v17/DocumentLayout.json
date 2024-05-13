@@ -3,16 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{ECCBC224-68BD-4EDB-A18C-97D4CC7B130B}|jogo-space-shooter-godot4-csharp.csproj|c:\\users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\scripts\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ECCBC224-68BD-4EDB-A18C-97D4CC7B130B}|jogo-space-shooter-godot4-csharp.csproj|solutionrelative:scripts\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ECCBC224-68BD-4EDB-A18C-97D4CC7B130B}|jogo-space-shooter-godot4-csharp.csproj|c:\\users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\scripts\\bigboss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECCBC224-68BD-4EDB-A18C-97D4CC7B130B}|jogo-space-shooter-godot4-csharp.csproj|solutionrelative:scripts\\bigboss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{ECCBC224-68BD-4EDB-A18C-97D4CC7B130B}|jogo-space-shooter-godot4-csharp.csproj|c:\\users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\scripts\\laserenemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ECCBC224-68BD-4EDB-A18C-97D4CC7B130B}|jogo-space-shooter-godot4-csharp.csproj|solutionrelative:scripts\\laserenemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ECCBC224-68BD-4EDB-A18C-97D4CC7B130B}|jogo-space-shooter-godot4-csharp.csproj|c:\\users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\scripts\\bigboss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ECCBC224-68BD-4EDB-A18C-97D4CC7B130B}|jogo-space-shooter-godot4-csharp.csproj|solutionrelative:scripts\\bigboss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ECCBC224-68BD-4EDB-A18C-97D4CC7B130B}|jogo-space-shooter-godot4-csharp.csproj|c:\\users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\scripts\\instantiateboss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECCBC224-68BD-4EDB-A18C-97D4CC7B130B}|jogo-space-shooter-godot4-csharp.csproj|solutionrelative:scripts\\instantiateboss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ECCBC224-68BD-4EDB-A18C-97D4CC7B130B}|jogo-space-shooter-godot4-csharp.csproj|c:\\users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\scripts\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECCBC224-68BD-4EDB-A18C-97D4CC7B130B}|jogo-space-shooter-godot4-csharp.csproj|solutionrelative:scripts\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ECCBC224-68BD-4EDB-A18C-97D4CC7B130B}|jogo-space-shooter-godot4-csharp.csproj|c:\\users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\scripts\\difficultyincrease.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECCBC224-68BD-4EDB-A18C-97D4CC7B130B}|jogo-space-shooter-godot4-csharp.csproj|solutionrelative:scripts\\difficultyincrease.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ECCBC224-68BD-4EDB-A18C-97D4CC7B130B}|jogo-space-shooter-godot4-csharp.csproj|c:\\users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\scripts\\boss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECCBC224-68BD-4EDB-A18C-97D4CC7B130B}|jogo-space-shooter-godot4-csharp.csproj|solutionrelative:scripts\\boss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ECCBC224-68BD-4EDB-A18C-97D4CC7B130B}|jogo-space-shooter-godot4-csharp.csproj|c:\\users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\scripts\\laser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECCBC224-68BD-4EDB-A18C-97D4CC7B130B}|jogo-space-shooter-godot4-csharp.csproj|solutionrelative:scripts\\laser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{ECCBC224-68BD-4EDB-A18C-97D4CC7B130B}|jogo-space-shooter-godot4-csharp.csproj|c:\\users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\scripts\\instantiateenemies.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -27,28 +43,12 @@
       "RelativeMoniker": "D:0:0:{ECCBC224-68BD-4EDB-A18C-97D4CC7B130B}|jogo-space-shooter-godot4-csharp.csproj|solutionrelative:scripts\\powerupmove.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ECCBC224-68BD-4EDB-A18C-97D4CC7B130B}|jogo-space-shooter-godot4-csharp.csproj|c:\\users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\scripts\\boss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ECCBC224-68BD-4EDB-A18C-97D4CC7B130B}|jogo-space-shooter-godot4-csharp.csproj|solutionrelative:scripts\\boss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{ECCBC224-68BD-4EDB-A18C-97D4CC7B130B}|jogo-space-shooter-godot4-csharp.csproj|c:\\users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\scripts\\nave.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ECCBC224-68BD-4EDB-A18C-97D4CC7B130B}|jogo-space-shooter-godot4-csharp.csproj|solutionrelative:scripts\\nave.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ECCBC224-68BD-4EDB-A18C-97D4CC7B130B}|jogo-space-shooter-godot4-csharp.csproj|c:\\users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\scripts\\laser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ECCBC224-68BD-4EDB-A18C-97D4CC7B130B}|jogo-space-shooter-godot4-csharp.csproj|solutionrelative:scripts\\laser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{ECCBC224-68BD-4EDB-A18C-97D4CC7B130B}|jogo-space-shooter-godot4-csharp.csproj|c:\\users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\scripts\\instantiatepowerups.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ECCBC224-68BD-4EDB-A18C-97D4CC7B130B}|jogo-space-shooter-godot4-csharp.csproj|solutionrelative:scripts\\instantiatepowerups.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ECCBC224-68BD-4EDB-A18C-97D4CC7B130B}|jogo-space-shooter-godot4-csharp.csproj|c:\\users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\scripts\\instantiateboss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ECCBC224-68BD-4EDB-A18C-97D4CC7B130B}|jogo-space-shooter-godot4-csharp.csproj|solutionrelative:scripts\\instantiateboss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ECCBC224-68BD-4EDB-A18C-97D4CC7B130B}|jogo-space-shooter-godot4-csharp.csproj|c:\\users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\scripts\\difficultyincrease.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ECCBC224-68BD-4EDB-A18C-97D4CC7B130B}|jogo-space-shooter-godot4-csharp.csproj|solutionrelative:scripts\\difficultyincrease.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,7 +58,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -66,13 +66,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "BigBoss.cs",
               "DocumentMoniker": "C:\\Users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\Scripts\\BigBoss.cs",
               "RelativeDocumentMoniker": "Scripts\\BigBoss.cs",
               "ToolTip": "C:\\Users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\Scripts\\BigBoss.cs",
               "RelativeToolTip": "Scripts\\BigBoss.cs",
-              "ViewState": "AQIAAEIAAAAAAAAAAAAowB8AAAAjAAAA",
+              "ViewState": "AQIAAOsAAAAAAAAAAAAUwPoAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-10T17:03:37.762Z",
               "EditorCaption": ""
@@ -85,40 +85,40 @@
               "RelativeDocumentMoniker": "Scripts\\LaserEnemy.cs",
               "ToolTip": "C:\\Users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\Scripts\\LaserEnemy.cs",
               "RelativeToolTip": "Scripts\\LaserEnemy.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAQAAAA",
+              "ViewState": "AQIAABcAAAAAAAAAAAAiwAUAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-18T21:05:56.185Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Game.cs",
               "DocumentMoniker": "C:\\Users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\Scripts\\Game.cs",
               "RelativeDocumentMoniker": "Scripts\\Game.cs",
               "ToolTip": "C:\\Users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\Scripts\\Game.cs",
               "RelativeToolTip": "Scripts\\Game.cs",
-              "ViewState": "AQIAAJgAAAAAAAAAAAAAAJ4AAAACAAAA",
+              "ViewState": "AQIAABEAAAAAAAAAAAAQwKIAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-26T15:58:26.894Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "Boss.cs",
               "DocumentMoniker": "C:\\Users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\Scripts\\Boss.cs",
               "RelativeDocumentMoniker": "Scripts\\Boss.cs",
               "ToolTip": "C:\\Users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\Scripts\\Boss.cs",
               "RelativeToolTip": "Scripts\\Boss.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEAAAAAEAAAA",
+              "ViewState": "AQIAADUAAAAAAAAAAAAwwEkAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-01T13:13:21.327Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 6,
               "Title": "Laser.cs",
               "DocumentMoniker": "C:\\Users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\Scripts\\Laser.cs",
               "RelativeDocumentMoniker": "Scripts\\Laser.cs",
@@ -131,7 +131,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "PowerUpMove.cs",
               "DocumentMoniker": "C:\\Users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\Scripts\\PowerUpMove.cs",
               "RelativeDocumentMoniker": "Scripts\\PowerUpMove.cs",
@@ -139,12 +139,11 @@
               "RelativeToolTip": "Scripts\\PowerUpMove.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-06T18:01:34.491Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-06T18:01:34.491Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "Nave.cs",
               "DocumentMoniker": "C:\\Users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\Scripts\\Nave.cs",
               "RelativeDocumentMoniker": "Scripts\\Nave.cs",
@@ -152,12 +151,11 @@
               "RelativeToolTip": "Scripts\\Nave.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAIMAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-06T17:54:50.726Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-06T17:54:50.726Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "Enemy.cs",
               "DocumentMoniker": "C:\\Users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\Scripts\\Enemy.cs",
               "RelativeDocumentMoniker": "Scripts\\Enemy.cs",
@@ -165,12 +163,11 @@
               "RelativeToolTip": "Scripts\\Enemy.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAADQAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T16:57:00.192Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T16:57:00.192Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "InstantiateEnemies.cs",
               "DocumentMoniker": "C:\\Users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\Scripts\\InstantiateEnemies.cs",
               "RelativeDocumentMoniker": "Scripts\\InstantiateEnemies.cs",
@@ -178,36 +175,37 @@
               "RelativeToolTip": "Scripts\\InstantiateEnemies.cs",
               "ViewState": "AQIAAAgAAAAAAAAAAAAQwBoAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T17:14:27.234Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T17:14:27.234Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 2,
               "Title": "InstantiateBoss.cs",
               "DocumentMoniker": "C:\\Users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\Scripts\\InstantiateBoss.cs",
               "RelativeDocumentMoniker": "Scripts\\InstantiateBoss.cs",
               "ToolTip": "C:\\Users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\Scripts\\InstantiateBoss.cs",
               "RelativeToolTip": "Scripts\\InstantiateBoss.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAABYAAAAAAAAAAAAgwCgAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-18T21:09:07.283Z"
+              "WhenOpened": "2024-04-18T21:09:07.283Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 4,
               "Title": "DifficultyIncrease.cs",
               "DocumentMoniker": "C:\\Users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\Scripts\\DifficultyIncrease.cs",
               "RelativeDocumentMoniker": "Scripts\\DifficultyIncrease.cs",
               "ToolTip": "C:\\Users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\Scripts\\DifficultyIncrease.cs",
               "RelativeToolTip": "Scripts\\DifficultyIncrease.cs",
-              "ViewState": "AQIAACYAAAAAAAAAAAAiwDIAAAAzAAAA",
+              "ViewState": "AQIAABIAAAAAAAAAAAAiwC0AAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T16:47:47.595Z"
+              "WhenOpened": "2024-04-26T16:47:47.595Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "InstantiatePowerUps.cs",
               "DocumentMoniker": "C:\\Users\\rod_s\\source\\repos\\rodolfosouzamoraes\\jogo-space-shooter-godot4-csharp\\Scripts\\InstantiatePowerUps.cs",
               "RelativeDocumentMoniker": "Scripts\\InstantiatePowerUps.cs",
