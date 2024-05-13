@@ -39,7 +39,7 @@ public partial class BigBoss : Node2D
     public override void _Ready()
 	{
         game = GetParent().GetNode<Game>(".");
-        game.BigBossOn = true;
+        game.ShowLifeBarBigBoss();
 
         laserVerticalBody = GetNodeOrNull<StaticBody2D>("LaserVerticalBody");
         shapeLaserVerticalExternal = GetNodeOrNull<CollisionShape2D>("LaserVerticalBody/CollisionShape2D");
@@ -212,12 +212,18 @@ public partial class BigBoss : Node2D
     {
         if (isFire == true)
         {
-            Fire(-30);
-            Fire(-45);
-            Fire(-60);
             Fire(30);
             Fire(45);
             Fire(60);
+            Fire(120);
+            Fire(135);
+            Fire(150);
+            Fire(210);
+            Fire(225);
+            Fire(240);
+            Fire(300);
+            Fire(315);
+            Fire(330);            
             isFire = false;
             timerLaserFire.Start();
         }

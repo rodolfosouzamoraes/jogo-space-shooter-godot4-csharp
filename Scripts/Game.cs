@@ -3,7 +3,9 @@ using System;
 
 public partial class Game : Node
 {
-	Label score;
+    [Export] PackedScene bigBoss = ResourceLoader.Load<PackedScene>("res://Prefabs/big_boss.tscn");
+
+    Label score;
 	int scoreTotal;
 	Sprite2D lifeOn1;
 	Sprite2D lifeOn2;
@@ -26,6 +28,9 @@ public partial class Game : Node
 
 	int lifeBigBossValueMax = 50000;
 	int lifeBigBossValueNow;
+    Timer timerBigBoss;
+    bool isInstantiateBigBoss = false;
+    double waitTimerInstantiate = 180;
 
 
     public int LifePlayer
@@ -73,18 +78,37 @@ public partial class Game : Node
 
 		levelNow = GetNode<Label>("CanvasLayer/Top/Label");
 
-		lifeBigBoss = GetNode<Node2D>("CanvasLayer/Top/LifeBigBoss");
-		lifeBigBossBar = GetNode<ProgressBar>("CanvasLayer/Top/LifeBigBoss/lifeBigBosBar");
+		ConfigureBigBoss();
+    }
+
+	private void ConfigureBigBoss()
+	{
+        lifeBigBoss = GetNode<Node2D>("CanvasLayer/Top/LifeBigBoss");
+        lifeBigBossBar = GetNode<ProgressBar>("CanvasLayer/Top/LifeBigBoss/lifeBigBosBar");
         lifeBigBossBar.MaxValue = lifeBigBossValueMax;
         lifeBigBossValueNow = lifeBigBossValueMax;
         lifeBigBossBar.Value = lifeBigBossValueNow;
-		//DisableLifeBarBigBoss();
+        DisableLifeBarBigBoss();
+
+        Callable callable = Callable.From(() => InstantiateBigBoss());
+
+        timerBigBoss = new Timer();
+        timerBigBoss.OneShot = true;
+        timerBigBoss.WaitTime = waitTimerInstantiate;
+        timerBigBoss.Autostart = true;
+        timerBigBoss.Connect("timeout", callable);
+        AddChild(timerBigBoss);
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
 	{
-	}
+        if (isInstantiateBigBoss == true)
+        {
+            isInstantiateBigBoss = false;
+            timerBigBoss.Start();
+        }
+    }
 
 	public void IncrementScore(int points)
 	{
@@ -199,4 +223,16 @@ public partial class Game : Node
 	{
 		lifeBigBoss.Hide();
 	}
+
+    private void InstantiateBigBoss()
+    {
+		if(bigBossOn == false)
+		{
+			isInstantiateBigBoss = true;
+            Node bossNode = bigBoss.Instantiate();
+            AddChild(bossNode);
+            bossNode.GetNode<Node2D>(bossNode.GetPath()).Position = new Vector2(558, -452);
+            bigBossOn = true;
+        }        
+    }
 }
