@@ -35,8 +35,6 @@ public partial class BigBoss : Node2D
     Timer timerLaserFire;
     bool isFire;
     Sprite2D bigBossBody;
-
-    float enemyLife = 100;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
@@ -178,8 +176,8 @@ public partial class BigBoss : Node2D
 		
 		if(area.Name == "LaserBody")
 		{
-            enemyLife -= 25;
-            if(enemyLife <= 0)
+            game.DecrementLifeBigBoss(25);
+            if (game.LifeBigBossValueNow <= 0)
             {
                 ExplosionEnemy();
             }
@@ -247,6 +245,7 @@ public partial class BigBoss : Node2D
         Game game = GetParent().GetNode<Game>(".");
         game.IncrementScore(100000);
         game.BigBossOn = false;
+        game.DisableLifeBarBigBoss();
         DestroyEnemy();
     }
 

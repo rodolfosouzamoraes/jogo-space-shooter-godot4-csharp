@@ -21,7 +21,14 @@ public partial class Game : Node
 
 	bool bigBossOn = false;
 
-	public int LifePlayer
+	Node2D lifeBigBoss;
+	ProgressBar lifeBigBossBar;
+
+	int lifeBigBossValueMax = 50000;
+	int lifeBigBossValueNow;
+
+
+    public int LifePlayer
 	{
 		get { return lifePlayer; }
 	}
@@ -30,6 +37,11 @@ public partial class Game : Node
 	{
 		get { return bigBossOn; }
 		set { bigBossOn = value; }
+	}
+
+	public int LifeBigBossValueNow
+	{
+		get { return lifeBigBossValueNow; }
 	}
 
 	// Called when the node enters the scene tree for the first time.
@@ -60,6 +72,13 @@ public partial class Game : Node
 		pauseNode.Hide();
 
 		levelNow = GetNode<Label>("CanvasLayer/Top/Label");
+
+		lifeBigBoss = GetNode<Node2D>("CanvasLayer/Top/LifeBigBoss");
+		lifeBigBossBar = GetNode<ProgressBar>("CanvasLayer/Top/LifeBigBoss/lifeBigBosBar");
+        lifeBigBossBar.MaxValue = lifeBigBossValueMax;
+        lifeBigBossValueNow = lifeBigBossValueMax;
+        lifeBigBossBar.Value = lifeBigBossValueNow;
+		//DisableLifeBarBigBoss();
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -161,5 +180,23 @@ public partial class Game : Node
 	public void ChangeLevelText(string text)
 	{
 		levelNow.Text = text;
+	}
+
+	public void DecrementLifeBigBoss(int value)
+	{
+		lifeBigBossValueNow -= value;
+        lifeBigBossBar.Value = lifeBigBossValueNow;
+    }
+
+	public void ShowLifeBarBigBoss()
+	{
+        lifeBigBoss.Show();
+        lifeBigBossValueNow = lifeBigBossValueMax;
+        lifeBigBossBar.Value = lifeBigBossValueNow;
+    }
+
+	public void DisableLifeBarBigBoss()
+	{
+		lifeBigBoss.Hide();
 	}
 }

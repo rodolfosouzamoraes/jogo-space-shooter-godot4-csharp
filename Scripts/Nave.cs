@@ -28,7 +28,7 @@ public partial class Nave : Node2D
 		ConfigureTimerFire();
 		ConfigureTimerShield();
 
-        totalPowerUp = 0;
+        totalPowerUp = 5;//GoTo 0
     }
 
 	private void ConfigureTimerShield()

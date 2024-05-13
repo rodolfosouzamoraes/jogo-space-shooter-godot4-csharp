@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dw53ag5pl23qc"]
+[gd_scene load_steps=19 format=3 uid="uid://dw53ag5pl23qc"]
 
 [ext_resource type="PackedScene" uid="uid://pf6p6bq00ynd" path="res://Prefabs/nave.tscn" id="1_6n8gk"]
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_x75sy"]
@@ -16,6 +16,12 @@
 [ext_resource type="FontFile" uid="uid://013sfrx7oymf" path="res://Font/Font/CGF Locust Resistance.ttf" id="13_chtrf"]
 [ext_resource type="Script" path="res://Scripts/InstantiatePowerUps.cs" id="15_njrnj"]
 [ext_resource type="PackedScene" uid="uid://cocrpyty1gejv" path="res://Prefabs/big_boss.tscn" id="16_q0520"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aimtd"]
+bg_color = Color(0.313726, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ju4w0"]
+bg_color = Color(1, 0, 0, 1)
 
 [node name="Game" type="Node"]
 script = ExtResource("1_x75sy")
@@ -86,7 +92,30 @@ text = "Nv.1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="LifeBigBoss" type="Node2D" parent="CanvasLayer/Top"]
+
+[node name="lifeBigBosBar" type="ProgressBar" parent="CanvasLayer/Top/LifeBigBoss"]
+offset_left = 292.0
+offset_top = 42.0
+offset_right = 824.0
+offset_bottom = 69.0
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+theme_override_styles/background = SubResource("StyleBoxFlat_aimtd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ju4w0")
+
+[node name="Label" type="Label" parent="CanvasLayer/Top/LifeBigBoss"]
+offset_left = 494.0
+offset_top = 40.0
+offset_right = 623.0
+offset_bottom = 69.0
+theme_override_fonts/font = ExtResource("7_qxqxe")
+theme_override_font_sizes/font_size = 20
+text = "Big Boss"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="GameOver" type="Node2D" parent="CanvasLayer"]
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/GameOver"]
 modulate = Color(1, 1, 1, 0.784314)
@@ -182,6 +211,7 @@ text = "NO"
 
 [node name="PauseGame" type="Node2D" parent="CanvasLayer"]
 process_mode = 2
+visible = false
 
 [node name="Background" type="Sprite2D" parent="CanvasLayer/PauseGame"]
 modulate = Color(1, 1, 1, 0.705882)
