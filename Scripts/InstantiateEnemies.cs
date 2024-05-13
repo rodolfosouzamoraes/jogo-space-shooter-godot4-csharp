@@ -38,8 +38,8 @@ public partial class InstantiateEnemies : Node2D
 
     public void InstantiateEnemy()
     {
-        if (game.BigBossOn == true) return;
         isInstantiate = true;
+        if (game.BigBossOn == true) return;
         int positionX = new Random().Next(50,1101);
         Node enemyNode = enemy.Instantiate();
         AddChild(enemyNode);

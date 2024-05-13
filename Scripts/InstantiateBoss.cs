@@ -37,8 +37,8 @@ public partial class InstantiateBoss : Node2D
 
     public void InstantiateNewBoss()
     {
-        if (game.BigBossOn == true) return;
         isInstantiate = true;
+        if (game.BigBossOn == true) return;
         int positionX = new Random().Next(50, 1101);
         Node bossNode = boss.Instantiate();
         AddChild(bossNode);
