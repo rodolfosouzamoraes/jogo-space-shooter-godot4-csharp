@@ -4,14 +4,16 @@ using System.Reflection.Emit;
 
 public partial class BigBoss : Node2D
 {
-	bool isPositionYTarget = false;
-	float positionYTarget = 330;
+    [Export] PackedScene laserNode = ResourceLoader.Load<PackedScene>("res://Prefabs/laser_enemy.tscn");
+
+    bool isPositionYTarget = false;
+	float positionYTarget = 188;
 	bool isLimitHorizontal = false;
     bool isLimitVertical = false;
 	float limitXLeft = 214;
 	float limitXRight = 946;
-    float limitYTop = 214;
-    float limitYBottom = 348;
+    float limitYTop = 130;
+    float limitYBottom = 196;
     int maxMoveHorizontal = 3; //5
     int countMoveHorizontal = 0;
     float rotationLimit = -90;
@@ -28,6 +30,10 @@ public partial class BigBoss : Node2D
     CollisionShape2D shapeLaserHorizontalInternal;
 
     bool isRotationBigBoss = false;
+
+    Timer timerLaserFire;
+    bool isFire;
+    Sprite2D bigBossBody;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
@@ -43,6 +49,17 @@ public partial class BigBoss : Node2D
         shapeLaserHorizontalInternal = GetNodeOrNull<CollisionShape2D>("LaserHorizontalBody/Area2D/CollisionShape2D");
 
         EnableOrDisableLasers(false);
+
+        bigBossBody = GetNodeOrNull<Sprite2D>("BigBossBody");
+
+        Callable callableLaser = Callable.From(() => EnableFire());
+
+        timerLaserFire = new Timer();
+        timerLaserFire.OneShot = true;
+        timerLaserFire.WaitTime = 0.5;
+        timerLaserFire.Autostart = true;
+        timerLaserFire.Connect("timeout", callableLaser);
+        AddChild(timerLaserFire);
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -178,10 +195,39 @@ public partial class BigBoss : Node2D
         if (isPositionYTarget == true && isRotationBigBoss == false)
         {
             EnableOrDisableLasers(true);
+            LaserFire();
         }
         else
         {
             EnableOrDisableLasers(false);
         }
+    }
+
+    private void LaserFire()
+    {
+        if (isFire == true)
+        {
+            Fire(-30);
+            Fire(-45);
+            Fire(-60);
+            Fire(30);
+            Fire(45);
+            Fire(60);
+            isFire = false;
+            timerLaserFire.Start();
+        }
+    }
+
+    private void EnableFire()
+    {
+        isFire = true;
+    }
+
+    private void Fire(int differenceR)
+    {
+        Node laser = laserNode.Instantiate();
+        GetParent().AddChild(laser);
+        laser.GetNode<Node2D>(laser.GetPath()).Position = new Vector2(Position.X, Position.Y);
+        laser.GetNode<Node2D>(laser.GetPath()).RotationDegrees += RotationDegrees + differenceR;
     }
 }

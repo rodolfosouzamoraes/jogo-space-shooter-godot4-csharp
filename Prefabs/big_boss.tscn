@@ -1,100 +1,8 @@
-[gd_scene load_steps=34 format=3 uid="uid://cocrpyty1gejv"]
+[gd_scene load_steps=12 format=3 uid="uid://cocrpyty1gejv"]
 
 [ext_resource type="Script" path="res://Scripts/BigBoss.cs" id="1_ba271"]
-[ext_resource type="Texture2D" uid="uid://bu2ku7x03ewr" path="res://Sprites/Nave/Turbine/Thruster_00000.png" id="2_0a1h4"]
-[ext_resource type="Texture2D" uid="uid://b1uyl7fs75rww" path="res://Sprites/Nave/Turbine/Thruster_00001.png" id="3_pmi1y"]
-[ext_resource type="Texture2D" uid="uid://bmo57glpsnchs" path="res://Sprites/Nave/Turbine/Thruster_00002.png" id="4_omhhn"]
-[ext_resource type="Texture2D" uid="uid://c2jdcqr35ihs7" path="res://Sprites/Nave/Turbine/Thruster_00003.png" id="5_4f44q"]
-[ext_resource type="Texture2D" uid="uid://dxneq3dihcvj5" path="res://Sprites/Nave/Turbine/Thruster_00004.png" id="6_2oabl"]
-[ext_resource type="Texture2D" uid="uid://b2rvjucm4nrir" path="res://Sprites/Nave/Turbine/Thruster_00005.png" id="7_i87to"]
-[ext_resource type="Texture2D" uid="uid://cyl1mdkt1gjl7" path="res://Sprites/Nave/Turbine/Thruster_00006.png" id="8_4vksh"]
-[ext_resource type="Texture2D" uid="uid://b2b75h32usu0n" path="res://Sprites/Nave/Turbine/Thruster_00007.png" id="9_wce5f"]
-[ext_resource type="Texture2D" uid="uid://c0wjf1ecgi2ox" path="res://Sprites/Nave/Turbine/Thruster_00008.png" id="10_k8enp"]
-[ext_resource type="Texture2D" uid="uid://bvflahdde28sh" path="res://Sprites/Nave/Turbine/Thruster_00009.png" id="11_ya0fo"]
-[ext_resource type="Texture2D" uid="uid://c62o56pjqunmt" path="res://Sprites/Nave/Turbine/Thruster_00010.png" id="12_kfj3k"]
-[ext_resource type="Texture2D" uid="uid://bnl01jkb32rfn" path="res://Sprites/Nave/Turbine/Thruster_00011.png" id="13_jrkt5"]
-[ext_resource type="Texture2D" uid="uid://b417smm36cik1" path="res://Sprites/Nave/Turbine/Thruster_00012.png" id="14_m2p2d"]
-[ext_resource type="Texture2D" uid="uid://dfs5xdka2s1jb" path="res://Sprites/Nave/Turbine/Thruster_00013.png" id="15_svsh5"]
-[ext_resource type="Texture2D" uid="uid://djtqr7bmfl5ap" path="res://Sprites/Nave/Turbine/Thruster_00014.png" id="16_ua4f1"]
-[ext_resource type="Texture2D" uid="uid://dk06riyfamy53" path="res://Sprites/Nave/Turbine/Thruster_00015.png" id="17_oepk7"]
-[ext_resource type="Texture2D" uid="uid://b1tpke0toig64" path="res://Sprites/Nave/Turbine/Thruster_00016.png" id="18_byd4a"]
-[ext_resource type="Texture2D" uid="uid://bs284roqq3jg6" path="res://Sprites/Nave/Turbine/Thruster_00017.png" id="19_7lquu"]
-[ext_resource type="Texture2D" uid="uid://c7mxvflw1sb8s" path="res://Sprites/Nave/Turbine/Thruster_00018.png" id="20_jxstf"]
-[ext_resource type="Texture2D" uid="uid://blsoj30crefyw" path="res://Sprites/Nave/Turbine/Thruster_00019.png" id="21_mlu66"]
-[ext_resource type="Texture2D" uid="uid://xnm7bv6vcfxj" path="res://Sprites/Nave/Turbine/Thruster_00020.png" id="22_x07l7"]
 [ext_resource type="Texture2D" uid="uid://bxeg4ilyuvh3p" path="res://Sprites/SkinEnemies/spaceStation_026.png" id="23_l7goo"]
 [ext_resource type="Texture2D" uid="uid://cql0loi56nlrj" path="res://Sprites/laserBlue06.png" id="24_pg0wm"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_y8yki"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_0a1h4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_pmi1y")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_omhhn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_4f44q")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_2oabl")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_i87to")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_4vksh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_wce5f")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_k8enp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_ya0fo")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_kfj3k")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_jrkt5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_m2p2d")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_svsh5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_ua4f1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_oepk7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_byd4a")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_7lquu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_jxstf")
-}, {
-"duration": 1.0,
-"texture": ExtResource("21_mlu66")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_x07l7")
-}],
-"loop": true,
-"name": &"default",
-"speed": 24.0
-}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4niq"]
 size = Vector2(77.5, 597)
@@ -124,19 +32,13 @@ size = Vector2(1553, 29)
 z_index = -1
 script = ExtResource("1_ba271")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(3.0127e-12, -104)
-rotation = -3.14159
-scale = Vector2(0.227241, 0.227241)
-sprite_frames = SubResource("SpriteFrames_y8yki")
-autoplay = "default"
-
-[node name="BossBody" type="Sprite2D" parent="."]
-position = Vector2(-5, -1)
+[node name="BigBossBody" type="Sprite2D" parent="."]
+position = Vector2(-5, 145.075)
 scale = Vector2(0.742754, 0.742753)
 texture = ExtResource("23_l7goo")
 
 [node name="BigBossBodyVertical" type="CharacterBody2D" parent="."]
+position = Vector2(0, 145.075)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BigBossBodyVertical"]
 position = Vector2(1.25, -0.5)
@@ -149,6 +51,7 @@ position = Vector2(1.5, -0.5)
 shape = SubResource("RectangleShape2D_s7xyd")
 
 [node name="BigBossBodyHorizontal" type="CharacterBody2D" parent="."]
+position = Vector2(0, 145.075)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BigBossBodyHorizontal"]
 position = Vector2(-5, -147)
@@ -161,6 +64,7 @@ position = Vector2(-5, -147)
 shape = SubResource("RectangleShape2D_vffm4")
 
 [node name="LaserVerticalBody" type="StaticBody2D" parent="."]
+position = Vector2(0, 145.075)
 
 [node name="Sprite2D" type="Sprite2D" parent="LaserVerticalBody"]
 z_index = -1
@@ -179,6 +83,7 @@ position = Vector2(0, 679)
 shape = SubResource("RectangleShape2D_jjydj")
 
 [node name="LaserHorizontalBody" type="StaticBody2D" parent="."]
+position = Vector2(0, 145.075)
 
 [node name="Sprite2D" type="Sprite2D" parent="LaserHorizontalBody"]
 z_index = -1

@@ -157,9 +157,4 @@ public partial class Game : Node
 		pauseNode.Hide();
 		GetTree().Paused = false;
 	}
-
-	public void ChangeLevelText(string level)
-	{
-		levelNow.Text = $"Nv.{level}";
-	}
 }

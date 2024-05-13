@@ -233,7 +233,7 @@ script = ExtResource("7_vrtvs")
 script = ExtResource("15_njrnj")
 
 [node name="BigBoss" parent="." instance=ExtResource("16_q0520")]
-position = Vector2(558, -318)
+position = Vector2(558, -452)
 
 [connection signal="pressed" from="CanvasLayer/GameOver/btnYes" to="." method="TryAgain"]
 [connection signal="pressed" from="CanvasLayer/GameOver/btnNo" to="." method="GotoMenu"]

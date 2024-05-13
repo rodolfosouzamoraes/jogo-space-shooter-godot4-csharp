@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyulmxklovdgw"]
+
+[ext_resource type="Script" path="res://Scripts/LaserEnemy.cs" id="1_tb64l"]
+[ext_resource type="Texture2D" uid="uid://cql0loi56nlrj" path="res://Sprites/laserBlue06.png" id="2_n0c8l"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bc5y6"]
+radius = 7.0
+height = 38.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r3gyb"]
+radius = 7.0
+height = 38.0
+
+[node name="LaserBigBoss" type="Node2D"]
+script = ExtResource("1_tb64l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 86.5)
+texture = ExtResource("2_n0c8l")
+
+[node name="LaserEnemy" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaserEnemy"]
+position = Vector2(0, 86.5)
+shape = SubResource("CapsuleShape2D_bc5y6")
+
+[node name="Area2D" type="Area2D" parent="LaserEnemy"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaserEnemy/Area2D"]
+position = Vector2(0, 86.5)
+shape = SubResource("CapsuleShape2D_r3gyb")
+
+[connection signal="body_entered" from="LaserEnemy/Area2D" to="." method="OnNode2DAreaEntered"]

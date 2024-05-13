@@ -4,7 +4,6 @@ using System;
 public partial class LaserEnemy : Node2D
 {
     Timer timer;
-
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -32,9 +31,19 @@ public partial class LaserEnemy : Node2D
 
     public void OnNode2DAreaEntered(Node2D area)
     {
-        if (area.Name != "LaserBody" && area.Name != "LaserEnemy")
-        {            
-            DestroyLaser();
+        switch (area.Name)
+        {
+            case "LaserBody":
+            case "LaserEnemy":
+            case "BigBossBodyVertical":
+            case "BigBossBodyHorizontal":
+            case "LaserVerticalBody":
+            case "LaserHorizontalBody":
+                break;
+            default:
+                DestroyLaser();
+                break;
+                    
         }
     }
 }
