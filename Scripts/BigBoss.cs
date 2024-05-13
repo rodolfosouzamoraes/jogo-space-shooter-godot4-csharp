@@ -13,22 +13,43 @@ public partial class BigBoss : Node2D
     float limitYTop = 214;
     float limitYBottom = 348;
     int maxMoveHorizontal = 3; //5
-    int countMoveHotizontal = 0;
+    int countMoveHorizontal = 0;
     float rotationLimit = -90;
     bool isRotationLimit = false;
 
     Game game;
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+
+    StaticBody2D laserVerticalBody;
+    CollisionShape2D shapeLaserVerticalExternal;
+    CollisionShape2D shapeLaserVerticalInternal;
+
+    StaticBody2D laserHorizontalBody;
+    CollisionShape2D shapeLaserHorizontalExternal;
+    CollisionShape2D shapeLaserHorizontalInternal;
+
+    bool isRotationBigBoss = false;
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
 	{
         game = GetParent().GetNode<Game>(".");
         game.BigBossOn = true;
+
+        laserVerticalBody = GetNodeOrNull<StaticBody2D>("LaserVerticalBody");
+        shapeLaserVerticalExternal = GetNodeOrNull<CollisionShape2D>("LaserVerticalBody/CollisionShape2D");
+        shapeLaserVerticalInternal = GetNodeOrNull<CollisionShape2D>("LaserVerticalBody/Area2D/CollisionShape2D");
+
+        laserHorizontalBody = GetNodeOrNull<StaticBody2D>("LaserHorizontalBody");
+        shapeLaserHorizontalExternal = GetNodeOrNull<CollisionShape2D>("LaserHorizontalBody/CollisionShape2D");
+        shapeLaserHorizontalInternal = GetNodeOrNull<CollisionShape2D>("LaserHorizontalBody/Area2D/CollisionShape2D");
+
+        EnableOrDisableLasers(false);
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
         MoveAI(delta);
+        LaserPower();
     }
 
     private void MoveAI(double delta)
@@ -39,13 +60,15 @@ public partial class BigBoss : Node2D
         }
         else
         {
-            if(countMoveHotizontal == maxMoveHorizontal)
+            if(countMoveHorizontal == maxMoveHorizontal)
             {
-                RotationBigBoss(delta);                
+                RotationBigBoss(delta);
+                isRotationBigBoss = true;
             }
             else
             {
-                MoveHorizontal(delta);
+                isRotationBigBoss = false;
+                MoveHorizontal(delta);                
             }
             
             MoveVertical(delta);
@@ -93,7 +116,7 @@ public partial class BigBoss : Node2D
             if (Position.X <= limitXLeft)
             {
                 isLimitHorizontal = true;
-                countMoveHotizontal++;
+                countMoveHorizontal++;
             }
         }
         else
@@ -103,7 +126,7 @@ public partial class BigBoss : Node2D
             if (Position.X >= limitXRight)
             {
                 isLimitHorizontal = false;
-                countMoveHotizontal++;
+                countMoveHorizontal++;
             }
         }
     }
@@ -116,7 +139,7 @@ public partial class BigBoss : Node2D
             if (RotationDegrees <= -90)
             {
                 isRotationLimit = true;
-                countMoveHotizontal = 0;
+                countMoveHorizontal = 0;
             }
         }
         else
@@ -125,7 +148,7 @@ public partial class BigBoss : Node2D
             if (RotationDegrees >= 0)
             {
                 isRotationLimit = false;
-                countMoveHotizontal = 0;
+                countMoveHorizontal = 0;
             }
         }
     }
@@ -138,4 +161,27 @@ public partial class BigBoss : Node2D
             GD.Print($"BigBoss Colidiu: {area.Name}");
         }
 	}
+
+    private void EnableOrDisableLasers(bool isActive)
+    {
+        laserVerticalBody.Visible = isActive;
+        shapeLaserVerticalExternal.SetDeferred("disabled", !isActive);
+        shapeLaserVerticalInternal.SetDeferred("disabled", !isActive);
+
+        laserHorizontalBody.Visible = isActive;
+        shapeLaserHorizontalExternal.SetDeferred("disabled", !isActive);
+        shapeLaserHorizontalInternal.SetDeferred("disabled", !isActive);
+    }
+
+    private void LaserPower()
+    {
+        if (isPositionYTarget == true && isRotationBigBoss == false)
+        {
+            EnableOrDisableLasers(true);
+        }
+        else
+        {
+            EnableOrDisableLasers(false);
+        }
+    }
 }

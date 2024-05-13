@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cocrpyty1gejv"]
+[gd_scene load_steps=34 format=3 uid="uid://cocrpyty1gejv"]
 
 [ext_resource type="Script" path="res://Scripts/BigBoss.cs" id="1_ba271"]
 [ext_resource type="Texture2D" uid="uid://bu2ku7x03ewr" path="res://Sprites/Nave/Turbine/Thruster_00000.png" id="2_0a1h4"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://blsoj30crefyw" path="res://Sprites/Nave/Turbine/Thruster_00019.png" id="21_mlu66"]
 [ext_resource type="Texture2D" uid="uid://xnm7bv6vcfxj" path="res://Sprites/Nave/Turbine/Thruster_00020.png" id="22_x07l7"]
 [ext_resource type="Texture2D" uid="uid://bxeg4ilyuvh3p" path="res://Sprites/SkinEnemies/spaceStation_026.png" id="23_l7goo"]
+[ext_resource type="Texture2D" uid="uid://cql0loi56nlrj" path="res://Sprites/laserBlue06.png" id="24_pg0wm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_y8yki"]
 animations = [{
@@ -107,6 +108,18 @@ size = Vector2(406, 66)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vffm4"]
 size = Vector2(406, 66)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ibqy2"]
+size = Vector2(30, 917)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjydj"]
+size = Vector2(30, 916)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nefq7"]
+size = Vector2(1553, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3iypn"]
+size = Vector2(1553, 29)
+
 [node name="BigBoss" type="Node2D"]
 z_index = -1
 script = ExtResource("1_ba271")
@@ -146,6 +159,43 @@ shape = SubResource("RectangleShape2D_kwi2q")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BigBossBodyHorizontal/Area2D"]
 position = Vector2(-5, -147)
 shape = SubResource("RectangleShape2D_vffm4")
+
+[node name="LaserVerticalBody" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="LaserVerticalBody"]
+z_index = -1
+position = Vector2(0, 667.5)
+scale = Vector2(2.30769, 25.2162)
+texture = ExtResource("24_pg0wm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaserVerticalBody"]
+position = Vector2(0, 679.5)
+shape = SubResource("RectangleShape2D_ibqy2")
+
+[node name="Area2D" type="Area2D" parent="LaserVerticalBody"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaserVerticalBody/Area2D"]
+position = Vector2(0, 679)
+shape = SubResource("RectangleShape2D_jjydj")
+
+[node name="LaserHorizontalBody" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="LaserHorizontalBody"]
+z_index = -1
+position = Vector2(-765.143, -145.999)
+rotation = 1.57079
+scale = Vector2(2.29515, 50.5379)
+texture = ExtResource("24_pg0wm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaserHorizontalBody"]
+position = Vector2(-923.5, -146.5)
+shape = SubResource("RectangleShape2D_nefq7")
+
+[node name="Area2D" type="Area2D" parent="LaserHorizontalBody"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaserHorizontalBody/Area2D"]
+position = Vector2(-923.5, -146.5)
+shape = SubResource("RectangleShape2D_3iypn")
 
 [connection signal="body_entered" from="BigBossBodyVertical/Area2D" to="." method="OnNode2DAreaEntered"]
 [connection signal="body_entered" from="BigBossBodyHorizontal/Area2D" to="." method="OnNode2DAreaEntered"]
