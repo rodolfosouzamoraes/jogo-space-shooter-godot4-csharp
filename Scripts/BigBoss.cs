@@ -13,9 +13,18 @@ public partial class BigBoss : Node2D
     bool isLimitVertical = false;
     float limitYTop = 214;
     float limitYBottom = 348;
+
+    int maxMoveHorizontal = 3;
+    int countMoveHorizontal = 0;
+    float rotationLimit = -90;
+    bool isRotationLimit = false;
+    bool isRotationBigBoss = false;
+
+    Game game;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+        game = GetParent().GetNode<Game>(".");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,7 +36,17 @@ public partial class BigBoss : Node2D
         }
 		else
 		{
-            MoveHorizontal(delta);
+            if(countMoveHorizontal == maxMoveHorizontal)
+            {
+                RotationBigBoss(delta);
+                isRotationBigBoss = true;
+            }
+            else
+            {
+                isRotationBigBoss = false;
+                MoveHorizontal(delta);
+            }
+            
             MoveVertical(delta);
         }
 	}
@@ -51,6 +70,7 @@ public partial class BigBoss : Node2D
             if (Position.X <= limitXLeft)
             {
                 isLimitHorizontal = true;
+                countMoveHorizontal++;
             }
         }
         else
@@ -60,6 +80,7 @@ public partial class BigBoss : Node2D
             if (Position.X >= limitXRight)
             {
                 isLimitHorizontal = false;
+                countMoveHorizontal++;
             }
         }
     }
@@ -82,6 +103,30 @@ public partial class BigBoss : Node2D
             if (Position.Y >= limitYBottom)
             {
                 isLimitVertical = false;
+            }
+        }
+    }
+
+    private void RotationBigBoss(double delta)
+    {
+        if(isRotationLimit == false)
+        {
+            RotationDegrees -= 50 * (float)delta;
+            if(RotationDegrees <= rotationLimit)
+            {
+                RotationDegrees = rotationLimit;
+                isRotationLimit = true;
+                countMoveHorizontal = 0;
+            }
+        }
+        else
+        {
+            RotationDegrees += 50 * (float)delta;
+            if (RotationDegrees >= 0)
+            {
+                RotationDegrees = 0;
+                isRotationLimit = false;
+                countMoveHorizontal = 0;
             }
         }
     }
