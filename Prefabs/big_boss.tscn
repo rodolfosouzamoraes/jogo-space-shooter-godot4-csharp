@@ -46,3 +46,6 @@ shape = SubResource("RectangleShape2D_bq1oe")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BigBossBodyHorizontal/Area2D"]
 position = Vector2(-5, -148)
 shape = SubResource("RectangleShape2D_7x4vh")
+
+[connection signal="body_entered" from="BigBossBodyVertical/Area2D" to="." method="OnNode2DAreaEntered"]
+[connection signal="body_entered" from="BigBossBodyHorizontal/Area2D" to="." method="OnNode2DAreaEntered"]

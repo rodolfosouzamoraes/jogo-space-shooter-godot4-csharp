@@ -3,7 +3,9 @@ using System;
 
 public partial class BigBoss : Node2D
 {
-	bool isPositionYTarget = false;
+    [Export] PackedScene explosion = ResourceLoader.Load<PackedScene>("res://Prefabs/explosion.tscn");
+
+    bool isPositionYTarget = false;
 	float positionYTarget = 330;
 
 	bool isLimitHorizontal = false;
@@ -129,5 +131,29 @@ public partial class BigBoss : Node2D
                 countMoveHorizontal = 0;
             }
         }
+    }
+
+    public void OnNode2DAreaEntered(Node2D area)
+    {
+        if(area.Name == "LaserBody")
+        {
+            game.DecrementLifeBigBoss(25);
+            if(game.LifeBigBossValueNow <= 0)
+            {
+                ExplosionBigBoss();
+            }
+        }
+    }
+
+    private void ExplosionBigBoss()
+    {
+        Node explosionNode = explosion.Instantiate();
+        GetParent().AddChild(explosionNode);
+        explosionNode.GetNode<Node2D>(explosionNode.GetPath()).Position = new Vector2(Position.X, Position.Y);
+        explosionNode.GetNode<Node2D>(explosionNode.GetPath()).Scale = new Vector2(5,5);
+        game.IncrementScore(100000);
+        game.BigBossOn = false;
+        game.HideLifeBarBigBoss();
+        QueueFree();
     }
 }
