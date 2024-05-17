@@ -4,7 +4,8 @@ using System;
 public partial class BigBoss : Node2D
 {
     [Export] PackedScene explosion = ResourceLoader.Load<PackedScene>("res://Prefabs/explosion.tscn");
-
+    [Export] PackedScene laserNode = ResourceLoader.Load<PackedScene>("res://Prefabs/laser_enemy.tscn");
+    
     bool isPositionYTarget = false;
 	float positionYTarget = 330;
 
@@ -23,11 +24,28 @@ public partial class BigBoss : Node2D
     bool isRotationBigBoss = false;
 
     Game game;
+
+    Timer timerLaserFire;
+    bool isFire = false;
+    Sprite2D bigBossBody;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
         game = GetParent().GetNode<Game>(".");
-	}
+
+        bigBossBody = GetNode<Sprite2D>("BigBossBody");
+
+        isFire = false;
+
+        Callable callableLaser = Callable.From(() => EnableFire());
+
+        timerLaserFire = new Timer();
+        timerLaserFire.OneShot = true;
+        timerLaserFire.WaitTime = 0.5;
+        timerLaserFire.Autostart = true;
+        timerLaserFire.Connect("timeout", callableLaser);
+        AddChild(timerLaserFire);
+    }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
@@ -51,6 +69,8 @@ public partial class BigBoss : Node2D
             
             MoveVertical(delta);
         }
+
+        LaserFire();
 	}
 
 	private void MoveInitialTarget(double delta)
@@ -155,5 +175,39 @@ public partial class BigBoss : Node2D
         game.BigBossOn = false;
         game.HideLifeBarBigBoss();
         QueueFree();
+    }
+
+    private void EnableFire()
+    {
+        isFire = true;
+    }
+
+    private void Fire(int differenceR)
+    {
+        Node laser = laserNode.Instantiate();
+        GetParent().AddChild(laser);
+        laser.GetNode<Node2D>(laser.GetPath()).Position = new Vector2(Position.X, Position.Y);
+        laser.GetNode<Node2D>(laser.GetPath()).RotationDegrees += RotationDegrees + differenceR;
+    }
+
+    private void LaserFire()
+    {
+        if(isFire == true)
+        {
+            Fire(30);
+            Fire(45);
+            Fire(60);
+            Fire(120);
+            Fire(135);
+            Fire(150);
+            Fire(210);
+            Fire(225);
+            Fire(240);
+            Fire(300);
+            Fire(315);
+            Fire(330);
+            isFire = false;
+            timerLaserFire.Start();
+        }
     }
 }

@@ -32,9 +32,16 @@ public partial class LaserEnemy : Node2D
 
     public void OnNode2DAreaEntered(Node2D area)
     {
-        if (area.Name != "LaserBody" && area.Name != "LaserEnemy")
+        switch(area.Name)
         {
-            DestroyLaser();
+            case "LaserBody":
+            case "LaserEnemy":
+            case "BigBossBodyVertical":
+            case "BigBossBodyHorizontal":
+                break;
+            default:
+                DestroyLaser();
+                break;
         }
     }
 }
