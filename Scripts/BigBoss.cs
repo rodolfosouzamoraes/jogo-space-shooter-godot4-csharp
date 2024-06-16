@@ -5,17 +5,17 @@ public partial class BigBoss : Node2D
 {
     [Export] PackedScene explosion = ResourceLoader.Load<PackedScene>("res://Prefabs/explosion.tscn");
     [Export] PackedScene laserNode = ResourceLoader.Load<PackedScene>("res://Prefabs/laser_enemy.tscn");
-    
-    bool isPositionYTarget = false;
-	float positionYTarget = 330;
 
-	bool isLimitHorizontal = false;
-	float limitXLeft = 214;
-	float limitXRight = 946;
+    bool isPositionYTarget = false;
+    float positionYTarget = 188;
+
+    bool isLimitHorizontal = false;
+    float limitXLeft = 214;
+    float limitXRight = 946;
 
     bool isLimitVertical = false;
-    float limitYTop = 214;
-    float limitYBottom = 348;
+    float limitYTop = 130;
+    float limitYBottom = 196;
 
     int maxMoveHorizontal = 3;
     int countMoveHorizontal = 0;
@@ -28,9 +28,19 @@ public partial class BigBoss : Node2D
     Timer timerLaserFire;
     bool isFire = false;
     Sprite2D bigBossBody;
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
+
+    StaticBody2D laserVerticalBody;
+    CollisionShape2D shapeLaserVerticalExternal;
+    CollisionShape2D shapeLaserVerticalInternal;
+
+    StaticBody2D laserHorizontalBody;
+    CollisionShape2D shapeLaserHorizontalExternal;
+    CollisionShape2D shapeLaserHorizontalInterno;
+
+
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
+    {
         game = GetParent().GetNode<Game>(".");
 
         bigBossBody = GetNode<Sprite2D>("BigBossBody");
@@ -45,18 +55,30 @@ public partial class BigBoss : Node2D
         timerLaserFire.Autostart = true;
         timerLaserFire.Connect("timeout", callableLaser);
         AddChild(timerLaserFire);
+
+        laserVerticalBody = GetNodeOrNull<StaticBody2D>("LaserVerticalBody");
+        shapeLaserVerticalExternal = GetNodeOrNull<CollisionShape2D>("LaserVerticalBody/CollisionShape2D");
+        shapeLaserVerticalInternal = GetNodeOrNull<CollisionShape2D>("LaserVerticalBody/Area2D/CollisionShape2D");
+
+        laserHorizontalBody = GetNodeOrNull<StaticBody2D>("LaserHorizontalBody");
+        shapeLaserHorizontalExternal = GetNodeOrNull<CollisionShape2D>("LaserHorizontalBody/CollisionShape2D");
+        shapeLaserHorizontalInterno = GetNodeOrNull<CollisionShape2D>("LaserHorizontalBody/Area2D/CollisionShape2D");
+
+        EnableOrDisableLasers(false);
+
+        game.ShowLifeBarBigBoss();
     }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-		if(isPositionYTarget == false)
-		{
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta)
+    {
+        if (isPositionYTarget == false)
+        {
             MoveInitialTarget(delta);
         }
-		else
-		{
-            if(countMoveHorizontal == maxMoveHorizontal)
+        else
+        {
+            if (countMoveHorizontal == maxMoveHorizontal)
             {
                 RotationBigBoss(delta);
                 isRotationBigBoss = true;
@@ -66,15 +88,23 @@ public partial class BigBoss : Node2D
                 isRotationBigBoss = false;
                 MoveHorizontal(delta);
             }
-            
+
             MoveVertical(delta);
         }
 
-        LaserFire();
-	}
+        if(isPositionYTarget == true && isRotationBigBoss == false) 
+        {
+            LaserFire();
+            EnableOrDisableLasers(true);
+        }
+        else
+        {
+            EnableOrDisableLasers(false);
+        }
+    }
 
-	private void MoveInitialTarget(double delta)
-	{
+    private void MoveInitialTarget(double delta)
+    {
         Vector2 velocity = new Vector2(0, 50 * (float)delta);
         Position += velocity;
         if (Position.Y >= positionYTarget)
@@ -83,8 +113,8 @@ public partial class BigBoss : Node2D
         }
     }
 
-	private void MoveHorizontal(double delta)
-	{
+    private void MoveHorizontal(double delta)
+    {
         if (isLimitHorizontal == false)
         {
             Vector2 velocity = new Vector2(50 * (float)delta, 0);
@@ -111,7 +141,7 @@ public partial class BigBoss : Node2D
     {
         if (isLimitVertical == false)
         {
-            Vector2 velocity = new Vector2(0,50 * (float)delta);
+            Vector2 velocity = new Vector2(0, 50 * (float)delta);
             Position -= velocity;
             if (Position.Y <= limitYTop)
             {
@@ -120,7 +150,7 @@ public partial class BigBoss : Node2D
         }
         else
         {
-            Vector2 velocity = new Vector2(0,50 * (float)delta);
+            Vector2 velocity = new Vector2(0, 50 * (float)delta);
             Position += velocity;
             if (Position.Y >= limitYBottom)
             {
@@ -131,10 +161,10 @@ public partial class BigBoss : Node2D
 
     private void RotationBigBoss(double delta)
     {
-        if(isRotationLimit == false)
+        if (isRotationLimit == false)
         {
             RotationDegrees -= 50 * (float)delta;
-            if(RotationDegrees <= rotationLimit)
+            if (RotationDegrees <= rotationLimit)
             {
                 RotationDegrees = rotationLimit;
                 isRotationLimit = true;
@@ -155,10 +185,10 @@ public partial class BigBoss : Node2D
 
     public void OnNode2DAreaEntered(Node2D area)
     {
-        if(area.Name == "LaserBody")
+        if (area.Name == "LaserBody")
         {
             game.DecrementLifeBigBoss(25);
-            if(game.LifeBigBossValueNow <= 0)
+            if (game.LifeBigBossValueNow <= 0)
             {
                 ExplosionBigBoss();
             }
@@ -170,7 +200,7 @@ public partial class BigBoss : Node2D
         Node explosionNode = explosion.Instantiate();
         GetParent().AddChild(explosionNode);
         explosionNode.GetNode<Node2D>(explosionNode.GetPath()).Position = new Vector2(Position.X, Position.Y);
-        explosionNode.GetNode<Node2D>(explosionNode.GetPath()).Scale = new Vector2(5,5);
+        explosionNode.GetNode<Node2D>(explosionNode.GetPath()).Scale = new Vector2(5, 5);
         game.IncrementScore(100000);
         game.BigBossOn = false;
         game.HideLifeBarBigBoss();
@@ -192,7 +222,7 @@ public partial class BigBoss : Node2D
 
     private void LaserFire()
     {
-        if(isFire == true)
+        if (isFire == true)
         {
             Fire(30);
             Fire(45);
@@ -209,5 +239,16 @@ public partial class BigBoss : Node2D
             isFire = false;
             timerLaserFire.Start();
         }
+    }
+
+    private void EnableOrDisableLasers(bool isActive)
+    {
+        laserVerticalBody.Visible = isActive;
+        shapeLaserVerticalExternal.SetDeferred("disabled", !isActive);
+        shapeLaserHorizontalInterno.SetDeferred("disabled", !isActive);
+
+        laserHorizontalBody.Visible = isActive;
+        shapeLaserHorizontalExternal.SetDeferred("disabled", !isActive);
+        shapeLaserHorizontalInterno.SetDeferred("disabled",!isActive);
     }
 }

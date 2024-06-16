@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://40n5yx8w04pd"]
+[gd_scene load_steps=12 format=3 uid="uid://40n5yx8w04pd"]
 
 [ext_resource type="Script" path="res://Scripts/BigBoss.cs" id="1_exway"]
 [ext_resource type="Texture2D" uid="uid://sy13xc3l8sg" path="res://Sprites/SkinEnemies/spaceStation_026.png" id="2_axjw7"]
@@ -15,6 +15,20 @@ size = Vector2(408, 66)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7x4vh"]
 size = Vector2(408, 66)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cny5t"]
+height = 686.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qk2k5"]
+height = 684.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sv4eq"]
+radius = 11.0
+height = 1650.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_63mew"]
+radius = 11.0
+height = 1652.0
 
 [node name="BigBoss" type="Node2D"]
 script = ExtResource("1_exway")
@@ -57,6 +71,37 @@ z_index = -1
 position = Vector2(8.25, 735)
 scale = Vector2(1.19231, 20.0541)
 texture = ExtResource("3_gwqka")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaserVerticalBody"]
+position = Vector2(8, 778)
+shape = SubResource("CapsuleShape2D_cny5t")
+
+[node name="Area2D" type="Area2D" parent="LaserVerticalBody"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaserVerticalBody/Area2D"]
+position = Vector2(8, 778)
+shape = SubResource("CapsuleShape2D_qk2k5")
+
+[node name="LaserHorizontalBody" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="LaserHorizontalBody"]
+z_index = -1
+position = Vector2(-841.002, 0.000341603)
+rotation = 1.57079
+scale = Vector2(1.69165, 50.3943)
+texture = ExtResource("3_gwqka")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaserHorizontalBody"]
+position = Vector2(-937, 0)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_sv4eq")
+
+[node name="Area2D" type="Area2D" parent="LaserHorizontalBody"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaserHorizontalBody/Area2D"]
+position = Vector2(-937, 0)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_63mew")
 
 [connection signal="body_entered" from="BigBossBodyVertical/Area2D" to="." method="OnNode2DAreaEntered"]
 [connection signal="body_entered" from="BigBossBodyHorizontal/Area2D" to="." method="OnNode2DAreaEntered"]
