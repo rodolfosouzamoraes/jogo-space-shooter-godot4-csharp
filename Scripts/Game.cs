@@ -32,6 +32,13 @@ public partial class Game : Node
     bool isInstantiateBigBoss = false;
     double waitTimerInstantiate = 180;
 
+	AudioStreamPlayer2D audioGame;
+    AudioStreamPlayer2D audioBigBoss;
+	AudioStreamPlayer2D audioPowerUp;
+
+	public static Game Instance;
+
+	
 
     public int LifePlayer
 	{
@@ -52,6 +59,7 @@ public partial class Game : Node
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		
 		score = GetNode<Label>("CanvasLayer/Top/Score");
 		scoreTotal = 0;
 		score.Text = scoreTotal.ToString();
@@ -79,6 +87,17 @@ public partial class Game : Node
 		levelNow = GetNode<Label>("CanvasLayer/Top/Label");
 
 		ConfigureBigBoss();
+
+		audioGame = GetNodeOrNull<AudioStreamPlayer2D>("AudioGame");
+		audioBigBoss = GetNodeOrNull<AudioStreamPlayer2D>("AudioBigBoss");
+        audioPowerUp = GetNodeOrNull<AudioStreamPlayer2D>("AudioPowerUp");
+
+
+        audioGame.Play();
+
+        DisableLifeBarBigBoss();
+
+        Instance = this;
     }
 
 	private void ConfigureBigBoss()
@@ -88,9 +107,8 @@ public partial class Game : Node
         lifeBigBossBar.MaxValue = lifeBigBossValueMax;
         lifeBigBossValueNow = lifeBigBossValueMax;
         lifeBigBossBar.Value = lifeBigBossValueNow;
-        DisableLifeBarBigBoss();
-
-        Callable callable = Callable.From(() => InstantiateBigBoss());
+        
+		Callable callable = Callable.From(() => InstantiateBigBoss());
 
         timerBigBoss = new Timer();
         timerBigBoss.OneShot = true;
@@ -103,7 +121,7 @@ public partial class Game : Node
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
 	{
-        if (isInstantiateBigBoss == true)
+        if (isInstantiateBigBoss == true && bigBossOn == false)
         {
             isInstantiateBigBoss = false;
             timerBigBoss.Start();
@@ -222,6 +240,8 @@ public partial class Game : Node
 	public void DisableLifeBarBigBoss()
 	{
 		lifeBigBoss.Hide();
+		audioBigBoss.Stop();
+		audioGame.Play();
 	}
 
     private void InstantiateBigBoss()
@@ -233,6 +253,13 @@ public partial class Game : Node
             AddChild(bossNode);
             bossNode.GetNode<Node2D>(bossNode.GetPath()).Position = new Vector2(558, -452);
             bigBossOn = true;
+			audioGame.Stop();
+			audioBigBoss.Play();
         }        
+    }
+
+	public void PlayAudioPowerUp()
+	{
+        audioPowerUp.Play();
     }
 }

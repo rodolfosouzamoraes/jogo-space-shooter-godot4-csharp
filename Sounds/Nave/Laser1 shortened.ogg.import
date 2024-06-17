@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bbf0wtrcwghrm"
+path="res://.godot/imported/Laser1 shortened.ogg-50c041ea56b0ce7d2952fe7a71b0a259.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/Nave/Laser1 shortened.ogg"
+dest_files=["res://.godot/imported/Laser1 shortened.ogg-50c041ea56b0ce7d2952fe7a71b0a259.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

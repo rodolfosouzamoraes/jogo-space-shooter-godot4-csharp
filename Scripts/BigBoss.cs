@@ -35,6 +35,9 @@ public partial class BigBoss : Node2D
     Timer timerLaserFire;
     bool isFire;
     Sprite2D bigBossBody;
+
+    AudioStreamPlayer2D audioLaser;
+    AudioStreamPlayer2D audioHit;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
@@ -61,6 +64,9 @@ public partial class BigBoss : Node2D
         timerLaserFire.Autostart = true;
         timerLaserFire.Connect("timeout", callableLaser);
         AddChild(timerLaserFire);
+
+        audioLaser = GetNodeOrNull<AudioStreamPlayer2D>("AudioLaser");
+        audioHit = GetNodeOrNull<AudioStreamPlayer2D>("AudioHit");
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -176,6 +182,7 @@ public partial class BigBoss : Node2D
 		
 		if(area.Name == "LaserBody")
 		{
+            audioHit.Play();
             game.DecrementLifeBigBoss(25);
             if (game.LifeBigBossValueNow <= 0)
             {
@@ -212,6 +219,7 @@ public partial class BigBoss : Node2D
     {
         if (isFire == true)
         {
+            audioLaser.Play();
             Fire(30);
             Fire(45);
             Fire(60);

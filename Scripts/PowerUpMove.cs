@@ -27,6 +27,7 @@ public partial class PowerUpMove : Node2D
 
     private void DestroyPowerUp()
     {
+        
         QueueFree();
     }
 
@@ -34,6 +35,7 @@ public partial class PowerUpMove : Node2D
     {
         if (area.Name == "PlayerBody")
         {
+            Game.Instance.PlayAudioPowerUp();
             DestroyPowerUp();
         }
     }

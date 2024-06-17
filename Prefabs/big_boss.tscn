@@ -1,6 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://cocrpyty1gejv"]
+[gd_scene load_steps=14 format=3 uid="uid://cocrpyty1gejv"]
 
 [ext_resource type="Script" path="res://Scripts/BigBoss.cs" id="1_ba271"]
+[ext_resource type="AudioStream" uid="uid://bbf0wtrcwghrm" path="res://Sounds/Nave/Laser1 shortened.ogg" id="4_epiuk"]
+[ext_resource type="AudioStream" uid="uid://b8mx8h8ykidwu" path="res://Sounds/Nave/hit.wav" id="5_3onh5"]
 [ext_resource type="Texture2D" uid="uid://bxeg4ilyuvh3p" path="res://Sprites/SkinEnemies/spaceStation_026.png" id="23_l7goo"]
 [ext_resource type="Texture2D" uid="uid://cql0loi56nlrj" path="res://Sprites/laserBlue06.png" id="24_pg0wm"]
 
@@ -101,6 +103,13 @@ shape = SubResource("RectangleShape2D_nefq7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LaserHorizontalBody/Area2D"]
 position = Vector2(-923.5, -146.5)
 shape = SubResource("RectangleShape2D_3iypn")
+
+[node name="AudioLaser" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_epiuk")
+
+[node name="AudioHit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_3onh5")
+volume_db = -10.0
 
 [connection signal="body_entered" from="BigBossBodyVertical/Area2D" to="." method="OnNode2DAreaEntered"]
 [connection signal="body_entered" from="BigBossBodyHorizontal/Area2D" to="." method="OnNode2DAreaEntered"]

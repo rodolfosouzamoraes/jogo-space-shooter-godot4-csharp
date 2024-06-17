@@ -16,6 +16,8 @@ public partial class Nave : Node2D
     bool isFire;
 	int totalPowerUp;
 
+	AudioStreamPlayer2D audioLaser;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
@@ -29,6 +31,8 @@ public partial class Nave : Node2D
 		ConfigureTimerShield();
 
         totalPowerUp = 0;
+
+		audioLaser = GetNodeOrNull<AudioStreamPlayer2D>("Body/AudioLaser");
     }
 
 	private void ConfigureTimerShield()
@@ -72,7 +76,9 @@ public partial class Nave : Node2D
 	{
 		if(isFire == true)
 		{
-			switch (totalPowerUp)
+			audioLaser.Play();
+
+            switch (totalPowerUp)
 			{
 				case 0:
 					Fire(0, 0, 0);
