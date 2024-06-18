@@ -7,15 +7,15 @@ public partial class BigBoss : Node2D
     [Export] PackedScene laserNode = ResourceLoader.Load<PackedScene>("res://Prefabs/laser_enemy.tscn");
     
     bool isPositionYTarget = false;
-	float positionYTarget = 330;
+	float positionYTarget = 188;
 
 	bool isLimitHorizontal = false;
 	float limitXLeft = 214;
 	float limitXRight = 946;
 
     bool isLimitVertical = false;
-    float limitYTop = 214;
-    float limitYBottom = 348;
+    float limitYTop = 130;
+    float limitYBottom = 196;
 
     int maxMoveHorizontal = 3;
     int countMoveHorizontal = 0;
@@ -28,8 +28,16 @@ public partial class BigBoss : Node2D
     Timer timerLaserFire;
     bool isFire = false;
     Sprite2D bigBossBody;
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+
+    StaticBody2D laserVerticalBody;
+    CollisionShape2D shapeLaserVerticalExternal;
+    CollisionShape2D shapeLaserVerticalInternal;
+
+    StaticBody2D laserHorizontalBody;
+    CollisionShape2D shapeLaserHorizontalExternal;
+    CollisionShape2D shapeLaserHorizontalInternal;
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
 	{
         game = GetParent().GetNode<Game>(".");
 
@@ -45,6 +53,16 @@ public partial class BigBoss : Node2D
         timerLaserFire.Autostart = true;
         timerLaserFire.Connect("timeout", callableLaser);
         AddChild(timerLaserFire);
+
+        laserVerticalBody = GetNodeOrNull<StaticBody2D>("LaserVerticalBody");
+        shapeLaserVerticalExternal = GetNodeOrNull<CollisionShape2D>("LaserVerticalBody/CollisionShape2D");
+        shapeLaserVerticalInternal = GetNodeOrNull<CollisionShape2D>("LaserVerticalBody/Area2D/CollisionShape2D");
+
+        laserHorizontalBody = GetNodeOrNull<StaticBody2D>("LaserHorizontalBody");
+        shapeLaserHorizontalExternal = GetNodeOrNull<CollisionShape2D>("LaserHorizontalBody/CollisionShape2D");
+        shapeLaserHorizontalInternal = GetNodeOrNull<CollisionShape2D>("LaserHorizontalBody/Area2D/CollisionShape2D");
+
+        EnableOrDisableLasers(false);
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -70,7 +88,16 @@ public partial class BigBoss : Node2D
             MoveVertical(delta);
         }
 
-        LaserFire();
+        if(isPositionYTarget == true && isRotationBigBoss == false)
+        {
+            LaserFire();
+            EnableOrDisableLasers(true);
+        }
+        else
+        {
+            EnableOrDisableLasers(false);
+        }
+        
 	}
 
 	private void MoveInitialTarget(double delta)
@@ -209,5 +236,16 @@ public partial class BigBoss : Node2D
             isFire = false;
             timerLaserFire.Start();
         }
+    }
+
+    private void EnableOrDisableLasers(bool isActive)
+    {
+        laserVerticalBody.Visible = isActive;
+        shapeLaserVerticalExternal.SetDeferred("disabled",!isActive);
+        shapeLaserVerticalInternal.SetDeferred("disabled",!isActive);
+
+        laserHorizontalBody.Visible = isActive;
+        shapeLaserHorizontalExternal.SetDeferred("disabled", !isActive);
+        shapeLaserHorizontalInternal.SetDeferred("disabled", !isActive);
     }
 }

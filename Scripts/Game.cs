@@ -3,6 +3,8 @@ using System;
 
 public partial class Game : Node
 {
+	[Export] PackedScene bigBoss = ResourceLoader.Load<PackedScene>("res://Prefabs/big_boss.tscn");
+
 	Label score;
 	int scoreTotal;
 	Sprite2D lifeOn1;
@@ -19,12 +21,15 @@ public partial class Game : Node
 
 	Label levelNow;
 
-	bool bigBossOn = true;
+	bool bigBossOn = false;
 
 	Node2D lifeBigBoss;
 	ProgressBar lifeBigBossBar;
 	int lifeBigBossValueMax = 1000;
 	int lifeBigBossValueNow;
+
+	Timer timerBigBoss;
+	bool isInstanciateBigBoss = false;
 
 	public int LifePlayer
 	{
@@ -77,12 +82,25 @@ public partial class Game : Node
 		lifeBigBossValueNow = lifeBigBossValueMax;
 		lifeBigBossBar.Value = lifeBigBossValueNow;
 
-		//HideLifeBarBigBoss();
+		HideLifeBarBigBoss();
+
+		Callable callable = Callable.From(() => InstantiateBigBoss());
+		timerBigBoss = new Timer();
+		timerBigBoss.OneShot = true;
+		timerBigBoss.WaitTime = 10;
+		timerBigBoss.Autostart = true;
+		timerBigBoss.Connect("timeout", callable);
+		AddChild(timerBigBoss);
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
 	{
+		if(isInstanciateBigBoss == true && bigBossOn == false)
+		{
+			isInstanciateBigBoss = false;
+			timerBigBoss.Start();
+		}
 	}
 
 	public void IncrementScore(int points)
@@ -197,5 +215,18 @@ public partial class Game : Node
 	public void HideLifeBarBigBoss()
 	{
 		lifeBigBoss.Hide();
+	}
+
+	private void InstantiateBigBoss()
+	{
+		if(bigBossOn == false)
+		{
+			isInstanciateBigBoss = true;
+			Node bossNode = bigBoss.Instantiate();
+			AddChild(bossNode);
+			bossNode.GetNode<Node2D>(bossNode.GetPath()).Position = new Vector2(558, -452);
+			bigBossOn = true;
+			ShowLifeBarBigBoss();
+        }
 	}
 }
