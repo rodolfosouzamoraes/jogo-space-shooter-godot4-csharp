@@ -17,6 +17,7 @@ public partial class Nave : Node2D
 	int totalPowerUp;
 
 	AudioStreamPlayer2D audioLaser;
+	Game gameNode;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -33,6 +34,7 @@ public partial class Nave : Node2D
         totalPowerUp = 0;
 
 		audioLaser = GetNodeOrNull<AudioStreamPlayer2D>("Body/AudioLaser");
+        gameNode = GetParent().GetNode<Game>(".");
     }
 
 	private void ConfigureTimerShield()
@@ -143,48 +145,55 @@ public partial class Nave : Node2D
 		laser.GetNode<Node2D>(laser.GetPath()).RotationDegrees += differenceR;
     }
 
-	public void OnNode2DAreaEntered(Node2D area)
+	public void IncrementPowerUpLaser()
 	{
-		switch (area.Name)
-		{
-			case "PowerUpBody":
-				totalPowerUp++;
-				if(totalPowerUp > 5)
-				{
-					totalPowerUp = 5;
-				}
-				break;
-			case "LaserBody":
-			case "PlayerBody":
-			case "PlayerBodyShield":
-				break;
-			case "PowerUpShieldBody":
-				EnableOrDisableShield(true);
-				timerShield.Start();
-                break;
-			case "PowerUpEngineBody":
-                Game gameNode3 = GetParent().GetNode<Game>(".");
-				gameNode3.IncrementLife();
-                break;
-			case "PowerUpStarBody":
-                Game gameNode2 = GetParent().GetNode<Game>(".");
-				gameNode2.IncrementScore(5000);
-                break;
-			default:
-				if (shieldBody.Visible == true) return;
-                Game gameNode = GetParent().GetNode<Game>(".");
-                gameNode.DecrementLife();
-				totalPowerUp = 0;
-                if (gameNode.LifePlayer < 0)
-                {
-                    Node explosionNode = explosion.Instantiate();
-                    GetParent().AddChild(explosionNode);
-                    explosionNode.GetNode<Node2D>(explosionNode.GetPath()).Position = new Vector2(body.Position.X, body.Position.Y);
-                    DestroyPlayer();
-                }
-				break;
-		}
-	}
+        totalPowerUp++;
+        if (totalPowerUp > 5)
+        {
+            totalPowerUp = 5;
+        }
+    }
+
+	public void EnableShield()
+	{
+        EnableOrDisableShield(true);
+        timerShield.Start();
+    }
+
+	public void IncrementEngine()
+	{
+        gameNode.IncrementLife();
+    }
+
+	public void IncrementPowerUpScore()
+	{
+        gameNode.IncrementScore(5000);
+    }
+
+	public void Damage()
+	{
+        if (shieldBody.Visible == true) return;
+        
+        gameNode.DecrementLife();
+        totalPowerUp = 0;
+        if (gameNode.LifePlayer < 0)
+        {
+            Node explosionNode = explosion.Instantiate();
+            GetParent().AddChild(explosionNode);
+            explosionNode.GetNode<Node2D>(explosionNode.GetPath()).Position = new Vector2(body.Position.X, body.Position.Y);
+            DestroyPlayer();
+        }
+    }
+
+    public void KillPlayer()
+    {
+        if (shieldBody.Visible == true) return;
+        gameNode.KillPlayer();
+        Node explosionNode = explosion.Instantiate();
+        GetParent().AddChild(explosionNode);
+        explosionNode.GetNode<Node2D>(explosionNode.GetPath()).Position = new Vector2(body.Position.X, body.Position.Y);
+        DestroyPlayer();
+    }
 
 	public void DestroyPlayer()
 	{

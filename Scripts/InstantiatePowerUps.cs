@@ -29,7 +29,7 @@ public partial class InstantiatePowerUps : Node2D
 
         timerPowerUpShield = new Timer();
         timerPowerUpShield.OneShot = true;
-        timerPowerUpShield.WaitTime = 90;
+        timerPowerUpShield.WaitTime = 90;//90
         timerPowerUpShield.Autostart = true;
         timerPowerUpShield.Connect("timeout", callable);
         AddChild(timerPowerUpShield);
@@ -41,7 +41,7 @@ public partial class InstantiatePowerUps : Node2D
 
         timerPowerUp = new Timer();
         timerPowerUp.OneShot = true;
-        timerPowerUp.WaitTime = 36;
+        timerPowerUp.WaitTime = 15;//36
         timerPowerUp.Autostart = true;
         timerPowerUp.Connect("timeout", callable);
         AddChild(timerPowerUp);
@@ -53,7 +53,7 @@ public partial class InstantiatePowerUps : Node2D
 
         timerPowerUpStar = new Timer();
         timerPowerUpStar.OneShot = true;
-        timerPowerUpStar.WaitTime = 75;
+        timerPowerUpStar.WaitTime = 75;//75
         timerPowerUpStar.Autostart = true;
         timerPowerUpStar.Connect("timeout", callable);
         AddChild(timerPowerUpStar);
@@ -65,7 +65,7 @@ public partial class InstantiatePowerUps : Node2D
 
         timerPowerUpEngine = new Timer();
         timerPowerUpEngine.OneShot = true;
-        timerPowerUpEngine.WaitTime = 60;
+        timerPowerUpEngine.WaitTime = 60;//60
         timerPowerUpEngine.Autostart = true;
         timerPowerUpEngine.Connect("timeout", callable);
         AddChild(timerPowerUpEngine);

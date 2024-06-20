@@ -30,7 +30,7 @@ public partial class Game : Node
 	int lifeBigBossValueNow;
     Timer timerBigBoss;
     bool isInstantiateBigBoss = false;
-    double waitTimerInstantiate = 180;
+	double waitTimerInstantiate = 180; //180
 
 	AudioStreamPlayer2D audioGame;
     AudioStreamPlayer2D audioBigBoss;
@@ -150,6 +150,15 @@ public partial class Game : Node
 				break;
 		}
 	}
+
+	public void KillPlayer()
+	{
+		lifePlayer = -1;
+        lifeOn3.Hide();
+        lifeOn2.Hide();
+        lifeOn1.Hide();
+        ShowGameOver();
+    }
 
     public void IncrementLife()
     {

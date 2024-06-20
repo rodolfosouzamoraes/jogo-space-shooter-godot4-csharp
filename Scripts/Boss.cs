@@ -92,7 +92,12 @@ public partial class Boss : Node2D
                 ExplosionEnemy();
             }
         }
-        else if (area.Name == "PlayerBody" || area.Name == "PlayerBodyShield")
+        else if (area.Name == "PlayerBody")
+        {
+            Nave nave = GetNode<Nave>(area.GetParent().GetParent().GetPath());
+            nave.KillPlayer();
+        }
+        else if (area.Name == "PlayerBodyShield")
         {
             ExplosionEnemy();
         }

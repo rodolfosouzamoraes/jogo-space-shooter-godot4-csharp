@@ -189,7 +189,21 @@ public partial class BigBoss : Node2D
                 ExplosionEnemy();
             }
         }
+        else if(area.Name == "PlayerBody")
+        {
+            Nave nave = GetNode<Nave>(area.GetParent().GetParent().GetPath());
+            nave.KillPlayer();
+        }
 	}
+
+    public void OnNode2DAreaEnteredLaser(Node2D area)
+    {
+        if (area.Name == "PlayerBody")
+        {
+            Nave nave = GetNode<Nave>(area.GetParent().GetParent().GetPath());
+            nave.KillPlayer();
+        }
+    }
 
     private void EnableOrDisableLasers(bool isActive)
     {

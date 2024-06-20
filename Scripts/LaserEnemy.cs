@@ -40,6 +40,11 @@ public partial class LaserEnemy : Node2D
             case "LaserVerticalBody":
             case "LaserHorizontalBody":
                 break;
+            case "PlayerBody":
+                Nave nave = GetNode<Nave>(area.GetParent().GetParent().GetPath());
+                nave.Damage();
+                DestroyLaser();
+                break;
             default:
                 DestroyLaser();
                 break;
