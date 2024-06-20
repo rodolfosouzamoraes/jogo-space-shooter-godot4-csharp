@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://pf6p6bq00ynd"]
+[gd_scene load_steps=31 format=3 uid="uid://pf6p6bq00ynd"]
 
 [ext_resource type="Texture2D" uid="uid://cv1cipndvbr2j" path="res://Sprites/Nave/playerShip3_red.png" id="1_7lk6v"]
 [ext_resource type="Script" path="res://Scripts/Nave.cs" id="1_kcuht"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://blsoj30crefyw" path="res://Sprites/Nave/Turbine/Thruster_00019.png" id="21_m8eh3"]
 [ext_resource type="Texture2D" uid="uid://xnm7bv6vcfxj" path="res://Sprites/Nave/Turbine/Thruster_00020.png" id="22_x3jbm"]
 [ext_resource type="Texture2D" uid="uid://dlnxbqitcboqm" path="res://Sprites/Effects/shield3.png" id="24_g21a0"]
+[ext_resource type="AudioStream" uid="uid://cqu55suhdhkf5" path="res://Sounds/Nave/laser_shot.ogg" id="25_ip53o"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rgk6b"]
 animations = [{
@@ -142,5 +143,8 @@ shape = SubResource("CircleShape2D_15hv8")
 
 [node name="Sprite2D" type="Sprite2D" parent="Body/PlayerBodyShield"]
 texture = ExtResource("24_g21a0")
+
+[node name="AudioLaser" type="AudioStreamPlayer2D" parent="Body"]
+stream = ExtResource("25_ip53o")
 
 [connection signal="body_entered" from="Body/PlayerBody/Area2D" to="." method="OnNode2DAreaEntered"]

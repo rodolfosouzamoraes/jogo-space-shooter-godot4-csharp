@@ -13,6 +13,7 @@ public partial class Enemy : Node2D
     CompressedTexture2D textureNv4 = ResourceLoader.Load<CompressedTexture2D>("res://Sprites/SkinEnemies/enemyRed1.png");
     CompressedTexture2D textureNv5 = ResourceLoader.Load<CompressedTexture2D>("res://Sprites/SkinEnemies/enemyBlack1.png");
 
+    AudioStreamPlayer2D audioHit;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -26,6 +27,8 @@ public partial class Enemy : Node2D
         AddChild(timer);
 
         body = GetNode<Sprite2D>("Body");
+
+        audioHit = GetNodeOrNull<AudioStreamPlayer2D>("AudioHit");
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -44,6 +47,7 @@ public partial class Enemy : Node2D
     {
         if(area.Name == "LaserBody")
         {
+            audioHit.Play();
             enemyLife -= 25;
             if(enemyLife <= 0)
             {

@@ -36,6 +36,9 @@ public partial class BigBoss : Node2D
     StaticBody2D laserHorizontalBody;
     CollisionShape2D shapeLaserHorizontalExternal;
     CollisionShape2D shapeLaserHorizontalInternal;
+
+    AudioStreamPlayer2D audioHit;
+    AudioStreamPlayer2D audioLaser;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
@@ -63,6 +66,9 @@ public partial class BigBoss : Node2D
         shapeLaserHorizontalInternal = GetNodeOrNull<CollisionShape2D>("LaserHorizontalBody/Area2D/CollisionShape2D");
 
         EnableOrDisableLasers(false);
+
+        audioHit = GetNodeOrNull<AudioStreamPlayer2D>("AudioHit");
+        audioLaser = GetNodeOrNull<AudioStreamPlayer2D>("AudioLaser");
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -184,6 +190,7 @@ public partial class BigBoss : Node2D
     {
         if(area.Name == "LaserBody")
         {
+            audioHit.Play();
             game.DecrementLifeBigBoss(25);
             if(game.LifeBigBossValueNow <= 0)
             {
@@ -221,6 +228,7 @@ public partial class BigBoss : Node2D
     {
         if(isFire == true)
         {
+            audioLaser.Play();
             Fire(30);
             Fire(45);
             Fire(60);

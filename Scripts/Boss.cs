@@ -17,6 +17,8 @@ public partial class Boss : Node2D
     CompressedTexture2D textureNv4 = ResourceLoader.Load<CompressedTexture2D>("res://Sprites/SkinEnemies/enemyBlue4.png");
     CompressedTexture2D textureNv5 = ResourceLoader.Load<CompressedTexture2D>("res://Sprites/SkinEnemies/enemyBlack4.png");
 
+    AudioStreamPlayer2D audioHit;
+    AudioStreamPlayer2D audioLaser;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -41,6 +43,9 @@ public partial class Boss : Node2D
         AddChild(timerLaser);
 
         body = GetNodeOrNull<Sprite2D>("BossBody");
+
+        audioLaser = GetNodeOrNull<AudioStreamPlayer2D>("AudioLaser");
+        audioHit = GetNodeOrNull<AudioStreamPlayer2D>("AudioHit");
     }
 
     private void EnableFire()
@@ -56,6 +61,7 @@ public partial class Boss : Node2D
 
         if (isFire == true)
         {
+            audioLaser.Play();
             Fire();
             isFire = false;
             timerLaser.Start();
@@ -78,6 +84,7 @@ public partial class Boss : Node2D
     {
         if (area.Name == "LaserBody")
         {
+            audioHit.Play();
             enemyLife -= 25;
             if (enemyLife <= 0)
             {

@@ -31,6 +31,12 @@ public partial class Game : Node
 	Timer timerBigBoss;
 	bool isInstanciateBigBoss = false;
 
+	AudioStreamPlayer2D audioGame;
+	AudioStreamPlayer2D audioBigBoss;
+	AudioStreamPlayer2D audioPowerUp;
+
+	public static Game Instance;
+
 	public int LifePlayer
 	{
 		get { return lifePlayer; }
@@ -82,15 +88,21 @@ public partial class Game : Node
 		lifeBigBossValueNow = lifeBigBossValueMax;
 		lifeBigBossBar.Value = lifeBigBossValueNow;
 
-		HideLifeBarBigBoss();
-
 		Callable callable = Callable.From(() => InstantiateBigBoss());
 		timerBigBoss = new Timer();
 		timerBigBoss.OneShot = true;
-		timerBigBoss.WaitTime = 10;
+		timerBigBoss.WaitTime = 180;
 		timerBigBoss.Autostart = true;
 		timerBigBoss.Connect("timeout", callable);
 		AddChild(timerBigBoss);
+
+		audioGame = GetNodeOrNull<AudioStreamPlayer2D>("AudioGame");
+		audioBigBoss = GetNodeOrNull<AudioStreamPlayer2D>("AudioBigBoss");
+		audioPowerUp = GetNodeOrNull<AudioStreamPlayer2D>("AudioPowerUp");
+
+        HideLifeBarBigBoss();
+
+		Instance = this;
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -210,11 +222,15 @@ public partial class Game : Node
 		lifeBigBoss.Show();
 		lifeBigBossValueNow = lifeBigBossValueMax;
 		lifeBigBossBar.Value = lifeBigBossValueNow;
+		audioGame.Stop();
+		audioBigBoss.Play();
 	}
 
 	public void HideLifeBarBigBoss()
 	{
 		lifeBigBoss.Hide();
+		audioGame.Play();
+		audioBigBoss.Stop();
 	}
 
 	private void InstantiateBigBoss()
@@ -228,5 +244,10 @@ public partial class Game : Node
 			bigBossOn = true;
 			ShowLifeBarBigBoss();
         }
+	}
+
+	public void PlayAudioPowerUp()
+	{
+		audioPowerUp.Play();
 	}
 }

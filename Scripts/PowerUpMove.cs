@@ -3,6 +3,7 @@ using System;
 
 public partial class PowerUpMove : Node2D
 {
+    [Export] int idPowerUp;
     Timer timer;
 
     // Called when the node enters the scene tree for the first time.
@@ -34,6 +35,7 @@ public partial class PowerUpMove : Node2D
     {
         if (area.Name == "PlayerBody")
         {
+            Game.Instance.PlayAudioPowerUp();
             DestroyPowerUp();
         }
     }

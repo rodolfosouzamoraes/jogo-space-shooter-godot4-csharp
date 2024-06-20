@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ckj7gogra57ei"]
+[gd_scene load_steps=28 format=3 uid="uid://ckj7gogra57ei"]
 
 [ext_resource type="Texture2D" uid="uid://d3pjva4e1u0vs" path="res://Sprites/enemyBlue1.png" id="1_aboo6"]
 [ext_resource type="Script" path="res://Scripts/Enemy.cs" id="1_j2xdl"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://c7mxvflw1sb8s" path="res://Sprites/Nave/Turbine/Thruster_00018.png" id="19_vqeb3"]
 [ext_resource type="Texture2D" uid="uid://blsoj30crefyw" path="res://Sprites/Nave/Turbine/Thruster_00019.png" id="20_eedpw"]
 [ext_resource type="Texture2D" uid="uid://xnm7bv6vcfxj" path="res://Sprites/Nave/Turbine/Thruster_00020.png" id="21_o3fej"]
+[ext_resource type="AudioStream" uid="uid://bl3qxlcmiyd8u" path="res://Sounds/Nave/hit.wav" id="24_0d62m"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_y8yki"]
 animations = [{
@@ -124,5 +125,8 @@ shape = SubResource("CircleShape2D_w5hdy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("CircleShape2D_yqw5w")
+
+[node name="AudioHit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("24_0d62m")
 
 [connection signal="body_entered" from="Area2D" to="." method="OnNode2DAreaEntered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dw53ag5pl23qc"]
+[gd_scene load_steps=21 format=3 uid="uid://dw53ag5pl23qc"]
 
 [ext_resource type="PackedScene" uid="uid://pf6p6bq00ynd" path="res://Prefabs/nave.tscn" id="1_6n8gk"]
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_x75sy"]
@@ -15,6 +15,9 @@
 [ext_resource type="FontFile" uid="uid://cwytft8d3p37h" path="res://Font/Font/multivac-interference.ttf" id="12_jhc04"]
 [ext_resource type="FontFile" uid="uid://013sfrx7oymf" path="res://Font/Font/CGF Locust Resistance.ttf" id="13_chtrf"]
 [ext_resource type="Script" path="res://Scripts/InstantiatePowerUps.cs" id="15_njrnj"]
+[ext_resource type="AudioStream" uid="uid://bjk246b3rq1dr" path="res://Sounds/Game/Venus.wav" id="16_oeehv"]
+[ext_resource type="AudioStream" uid="uid://cfm6ei06vggyw" path="res://Sounds/Game/BossMain.wav" id="17_aiwsc"]
+[ext_resource type="AudioStream" uid="uid://dmau5euytsl01" path="res://Sounds/Game/powerUp2.ogg" id="18_hu4x8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3k4r2"]
 bg_color = Color(0.313726, 0, 0, 1)
@@ -261,6 +264,16 @@ script = ExtResource("7_vrtvs")
 
 [node name="InstantiatePowerUps" type="Node2D" parent="."]
 script = ExtResource("15_njrnj")
+
+[node name="AudioGame" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_oeehv")
+autoplay = true
+
+[node name="AudioBigBoss" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_aiwsc")
+
+[node name="AudioPowerUp" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_hu4x8")
 
 [connection signal="pressed" from="CanvasLayer/GameOver/btnYes" to="." method="TryAgain"]
 [connection signal="pressed" from="CanvasLayer/GameOver/btnNo" to="." method="GotoMenu"]
