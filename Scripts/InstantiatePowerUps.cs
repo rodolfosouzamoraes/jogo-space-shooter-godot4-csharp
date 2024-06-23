@@ -41,7 +41,7 @@ public partial class InstantiatePowerUps : Node2D
 
         timerPowerUp = new Timer();
         timerPowerUp.OneShot = true;
-        timerPowerUp.WaitTime = 40;
+        timerPowerUp.WaitTime = 15;
         timerPowerUp.Autostart = true;
         timerPowerUp.Connect("timeout", callable);
         AddChild(timerPowerUp);

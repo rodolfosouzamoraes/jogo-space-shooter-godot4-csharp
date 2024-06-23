@@ -128,5 +128,6 @@ shape = SubResource("CircleShape2D_yqw5w")
 
 [node name="AudioHit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("24_0d62m")
+volume_db = -10.0
 
 [connection signal="body_entered" from="Area2D" to="." method="OnNode2DAreaEntered"]

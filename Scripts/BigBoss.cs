@@ -52,7 +52,7 @@ public partial class BigBoss : Node2D
 
         timerLaserFire = new Timer();
         timerLaserFire.OneShot = true;
-        timerLaserFire.WaitTime = 0.5;
+        timerLaserFire.WaitTime = 1;
         timerLaserFire.Autostart = true;
         timerLaserFire.Connect("timeout", callableLaser);
         AddChild(timerLaserFire);
@@ -196,6 +196,20 @@ public partial class BigBoss : Node2D
             {
                 ExplosionBigBoss();
             }
+        }
+        else if(area.Name == "PlayerBody")
+        {
+            Nave nave = GetNode<Nave>(area.GetParent().GetParent().GetPath());
+            nave.KillPlayer();
+        }
+    }
+
+    public void OnNode2DAreaEnteredLaser(Node2D area)
+    {
+        if (area.Name == "PlayerBody")
+        {
+            Nave nave = GetNode<Nave>(area.GetParent().GetParent().GetPath());
+            nave.KillPlayer();
         }
     }
 

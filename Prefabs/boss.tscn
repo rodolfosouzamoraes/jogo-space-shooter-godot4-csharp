@@ -130,6 +130,7 @@ shape = SubResource("CircleShape2D_w5hdy")
 
 [node name="AudioHit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("24_xmd3k")
+volume_db = -10.0
 
 [node name="AudioLaser" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("25_tna88")

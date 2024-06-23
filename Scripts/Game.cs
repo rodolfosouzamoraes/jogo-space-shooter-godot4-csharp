@@ -25,7 +25,7 @@ public partial class Game : Node
 
 	Node2D lifeBigBoss;
 	ProgressBar lifeBigBossBar;
-	int lifeBigBossValueMax = 1000;
+	int lifeBigBossValueMax = 500000;
 	int lifeBigBossValueNow;
 
 	Timer timerBigBoss;
@@ -36,6 +36,8 @@ public partial class Game : Node
 	AudioStreamPlayer2D audioPowerUp;
 
 	public static Game Instance;
+
+	Label lifeBigBossLabel;
 
 	public int LifePlayer
 	{
@@ -88,7 +90,10 @@ public partial class Game : Node
 		lifeBigBossValueNow = lifeBigBossValueMax;
 		lifeBigBossBar.Value = lifeBigBossValueNow;
 
-		Callable callable = Callable.From(() => InstantiateBigBoss());
+		lifeBigBossLabel = GetNodeOrNull<Label>("CanvasLayer/Top/LifeBigBoss/LifeBigBossNow");
+		lifeBigBossLabel.Text = lifeBigBossValueNow.ToString();
+
+        Callable callable = Callable.From(() => InstantiateBigBoss());
 		timerBigBoss = new Timer();
 		timerBigBoss.OneShot = true;
 		timerBigBoss.WaitTime = 180;
@@ -215,7 +220,8 @@ public partial class Game : Node
 	{
 		lifeBigBossValueNow -= value;
 		lifeBigBossBar.Value = lifeBigBossValueNow;
-	}
+        lifeBigBossLabel.Text = lifeBigBossValueNow.ToString();
+    }
 
 	public void ShowLifeBarBigBoss()
 	{
@@ -250,4 +256,13 @@ public partial class Game : Node
 	{
 		audioPowerUp.Play();
 	}
+
+	public void KillPlayer()
+	{
+		lifePlayer = -1;
+		lifeOn1.Hide();
+        lifeOn2.Hide();
+        lifeOn3.Hide();
+		ShowGameOver();
+    }
 }

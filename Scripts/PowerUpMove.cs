@@ -36,6 +36,22 @@ public partial class PowerUpMove : Node2D
         if (area.Name == "PlayerBody")
         {
             Game.Instance.PlayAudioPowerUp();
+            Nave nave = GetNode<Nave>(area.GetParent().GetParent().GetPath());
+            switch (idPowerUp)
+            {
+                case 1:
+                    nave.IncrementPowerUpLaser();
+                    break;
+                case 2:
+                    nave.IncrementPowerUpScore();
+                    break;
+                case 3:
+                    nave.IncrementEngine();
+                    break;
+                case 4:
+                    nave.EnableShield();
+                    break;
+            }
             DestroyPowerUp();
         }
     }

@@ -105,9 +105,12 @@ shape = SubResource("CapsuleShape2D_o5vg7")
 
 [node name="AudioHit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_4xlep")
+volume_db = -10.0
 
 [node name="AudioLaser" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_0u08x")
 
 [connection signal="body_entered" from="BigBossBodyVertical/Area2D" to="." method="OnNode2DAreaEntered"]
 [connection signal="body_entered" from="BigBossBodyHorizontal/Area2D" to="." method="OnNode2DAreaEntered"]
+[connection signal="body_entered" from="LaserVerticalBody/Area2D" to="." method="OnNode2DAreaEnteredLaser"]
+[connection signal="body_entered" from="LaserHorizontalBody/Area2D" to="." method="OnNode2DAreaEnteredLaser"]

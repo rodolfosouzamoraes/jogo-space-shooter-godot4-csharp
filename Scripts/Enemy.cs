@@ -56,6 +56,8 @@ public partial class Enemy : Node2D
         }
         else if (area.Name == "PlayerBody" || area.Name == "PlayerBodyShield")
         {
+            Nave nave = GetNode<Nave>(area.GetParent().GetParent().GetPath());
+            nave.Damage();
             ExplosionEnemy();
         }
     }

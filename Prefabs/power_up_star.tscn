@@ -8,6 +8,7 @@ radius = 16.0
 
 [node name="PowerUpStar" type="Node2D"]
 script = ExtResource("1_estgc")
+idPowerUp = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_j6igl")

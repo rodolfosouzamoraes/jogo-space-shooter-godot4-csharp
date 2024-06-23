@@ -146,5 +146,3 @@ texture = ExtResource("24_g21a0")
 
 [node name="AudioLaser" type="AudioStreamPlayer2D" parent="Body"]
 stream = ExtResource("25_ip53o")
-
-[connection signal="body_entered" from="Body/PlayerBody/Area2D" to="." method="OnNode2DAreaEntered"]
