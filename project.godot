@@ -10,10 +10,16 @@ config_version=5
 
 [application]
 
-config/name="jogo-space-shooter-godot4-csharp"
+config/name="Space Shooter"
 run/main_scene="res://Scenes/menu.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Sprites/Nave/playerShip3_red.png"
+config/windows_native_icon="res://Sprites/playerShip3_red.ico"
+
+[display]
+
+window/size/resizable=false
+window/size/borderless=true
 
 [dotnet]
 
